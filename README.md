@@ -4,52 +4,52 @@
 Anotações realizadas durante os meus estudos para a certificação **Associated Developer** da Magento
 
 
-# TOPICS
+# TÓPICOS
 
-1. [**MAGENTO ARCHITECTURE AND CUSTOMIZATION TECHNIQUES**](01-Magento-Architecture-and-Customization-Techniques.md)
-   1. Describe the Magento module-based architecture 
-   2. Describe the Magento directory structure 
-   3. Utilize configuration and configuration variables scope 
-   4. Demonstrate how to use dependency injection (DI) 
-   5. Demonstrate ability to use plugins 
-   6. Configure event observers and scheduled jobs 
-   7. Utilize the CLI 
-   8. Describe how extensions are installed and configured 
+1. [**ARQUITETURA MAGENTO E TÉCNICAS DE CUSTOMIZAÇÃO**](01-Arquitetura-e-Customizacao.md)
+   1. Descrever a arquitetura baseada em módulos da Magento 
+   2. Descrever a estrutura de diretórios da Magento 
+   3. Utilizar o escopo de configuração e variáveis de configuração 
+   4. Demonstrar como usar a injeção de dependência (Dependency Injection - DI) 
+   5. Demonstar habilidade no uso de plugins
+   6. Configurar event observers e trabalhos agendados (scheduled jobs)
+   7. Utilizar o CLI 
+   8. Descrever como as extensões são instaladas e configuradas 
 
-2. [**REQUEST FLOW PROCESSING**](02-Request-Flow-Processing.md)
-    1. Describe how to use Magento modes 
-    2. Demonstrate the ability to create a frontend controller with different response types (HTML / JSON / redirect) 
-    3. Demonstrate how to use URL rewrites for a catalog product view to a different URL 
+2. [**PROCESSAMENTO DO FLUXO DE REQUISIÇÃO**](02-Fluxo-de-Requisicao.md)
+    1. Descrever como usar os modos de deploy do Magento 
+    2. Demonstrar a capacidade de criar um controller frontend com diferentes tipos de resposta (HTML / JSON / redirect) 
+    3. Demonstrar como usar reescritas de URL de uma página de produto do catálogo para um URL diferente 
 
-3. [**CUSTOMIZING THE MAGENTO UI**](03-Customizing-the-Magento-UI.md)
-    1. Demonstrate the ability to customize the Magento UI using themes
-    2. Demonstrate an ability to create UI customizations using a combination of a block and template 
-    3. Identify the uses of different types of blocks 
-    4. Describe the elements of the Magento layout XML schema, including the major XML directives 
-    5. Create and add code and markup to a given page 
+3. [**PERSONALIZANDO A INTERFACE DE USUÁRIO (UI) DA MAGENTO**](03-Personalizando-a-UI.md)
+    1. Demonstrar a capacidade de personalizar a UI da Magento usando temas
+    2. Demonstrar habilidade para criar personalizações na interface do usuário usando uma combinação de um bloco e template
+    3. Identifique os usos dos diferentes tipos de blocos 
+    4. Descrever os elementos do esquema de layout XML da Magento, incluindo as principais diretivas XML
+    5. Criar e adicionar código e marcação em uma determinada página
 
-4. [**WORKING WITH DATABASES IN MAGENTO**](04-Working-with-Databases-in-Magento.md)
-    1. Describe the basic concepts of models, resource models, and collections 
-    2. Describe how entity load and save occurs 
-    3. Describe how to filter, sort, and specify the selected values for collections and repositories 
-    4. Demonstrate an ability to use declarative schema 
+4. [**TRABALHANDO COM BANCO DE DADOS NA MAGENTO**](04-Trabalhando-com-banco-de-dados.md)
+    1. Descrever os conceitos básicos de models, resource models e collections 
+    2. Descrever como ocorre a leitura e gravação de uma entidade
+    3. Descrever como filtrar, ordenar e especificar os valores selecionados para collections e repositories
+    4. Demonstrar habilidade para usar o esquema declarativo (declarative schema)
  
-5. [**DEVELOPING WITH ADMINHTML**](05-Developing-with-Adminhtml.md)
-    1. Create a controller for an admin router 
-    2. Define basic terms and elements of system configuration, including scopes, website, store, store view
-    3. Define / identify basic terms and elements of ACL 
-    4. Set up a menu item
-    5. Create appropriate permissions for users 
+5. [**DESENVOLVENDO COM O ADMINHTML**](05-Desenvolvendo-com-o-Adminhtml.md)
+    1. Criar um controller para uma rota de admin 
+    2. Definir os termos e elementos básicos da configuração do sistema, incluindo escopos, website/store/store view
+    3. Definir/identificar os termos e elementos básicos do ACL
+    4. Configurar um item de menu
+    5. Criar permissões apropriadas para usuários
 
-6. [**CUSTOMIZING MAGENTO BUSINESS LOGIC**](06-Customizing-Magento-Business-Logic.md)
-    1. Identify/describe standard product types (simple, configurable, bundled, etc.) 
-    2. Describe category properties in Magento 
-    3. Define how products are related to the category 
-    4. Describe the difference in behavior of different product types in the cart 
-    5. Describe native shipment functionality in Magento 
-    6. Describe and customize operations available in the customer account area 
-    7. Add or modify customer attributes
-    8. Customize the customer address
+6. [**PERSONALIZAÇÃO DA LÓGICA DE NEGÓCIOS DA MAGENTO**](06-Personalizacao-da-Logica-de-Negocios.md)
+    1. Identificar/descrever os tipos de produto padrão (simples, configurável, agrupado, etc.)
+    2. Descrever as propriedades da categoria na Magento
+    3. Definir como os produtos são relacionados a uma categoria
+    4. Descrever a diferença no comportamento dos diferentes tipos de produtos no carrinho 
+    5. Descrever a funcionalidade nativa de expedição na Magento 
+    6. Descrever e personalizar as operações disponíveis na área da conta do cliente 
+    7. Adicionar ou modificar atributos do cliente
+    8. Personalizar o endereço do cliente
 
 
 # Principais Referências
