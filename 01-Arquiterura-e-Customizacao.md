@@ -1,42 +1,34 @@
-# 1. Magento Architecture and Customization Techniques 
+# 1. Arquitetura Magento e Técnicas de Customização 
 
-## 1.1 Describe the Magento module-based architecture
+## 1.1 Descrever a arquitetura baseada em módulos do Magento
 
-### Describe module architecture.
+### Descrever a arquitetura do módulo.
 
-> A module is a **logical group** – that is, a directory containing blocks, controllers, helpers, models – that are related to a **specific business feature**. In keeping with Magento’s commitment to optimal modularity, a module encapsulates one feature and has minimal dependencies on other modules. [Magento DevDocs - Module overview - What is](https://devdocs.magento.com/guides/v2.3/architecture/archi_perspectives/components/modules/mod_intro.html#arch-modules-overview)
->
-> The purpose of a module is to provide specific product features by implementing new functionality or extending the functionality of other modules. Each module is designed to function independently, so the inclusion or exclusion of a particular module does not typically affect the functionality of other modules. [Magento DevDocs - Module overview - Purpose](https://devdocs.magento.com/guides/v2.3/architecture/archi_perspectives/components/modules/mod_intro.html#purpose-of-a-module)
+Um módulo é um **grupo lógico** – ou seja, um deiratório contendo _blocks, controllers, helpers e models_ – que é relacionado à um **recurso específico** do negócio. Cada módulo pode adicionar um novo recurso implementando uma nova funcionalidade ou estendendo a funcionalidade de outro módulo. Contudo, o Magento possui foco na modularidade, por isso, um módulo deve trazer apenas um recurso e depender minimamente de outros módulos.
 
+Dessa forma, um módulo deverá ser o mais independente e específico possível. Sendo que a inclusão ou exclusão de um módulo não deve afetar a funcionalidade de outros. [Magento DevDocs - Module overview](https://devdocs.magento.com/guides/v2.3/architecture/archi_perspectives/components/modules/mod_intro.html)
 
-Modules are usually located in Magento 2 vendor directory. The vendor directory has the format: `vendor/<vendor>/<type>-<module-name>`. Where `<type>` is module, theme or language. 
+#### Tipos de componentes
+No Magento existem 3 tipos de componentes:
+- Módulos (adicionam ou estendem uma funcionalidade)
+- Temas (personalizam a aparência - que podem ser para o frontend ou para a área adminhtml)
+- Pacotes de tradução (adiciona traduções de idioma)
 
-In general, modules add functionality and themes customize the appearance. Both modules and themes have their own life cycle, which allows you to install, disable and delete the elements.
+#### As áreas do Magento
 
-#### Magento area types
+- `adminhtml` - A área adminhtml inclui o código necessário para o gerenciamento da loja. Refere-se ao painel administrativo (admin ou backend) do Magento. 
 
-`adminhtml` - The Admin panel area includes the code needed for store management. The /app/design/adminhtml directory contains all the code for components you’ll see while working in the Admin panel.
+- `frontend` - Refere-se à parte da loja na qual haverá a interação com o cliente (usuário final)
 
-`frontend` - The storefront (or frontend) contains template and layout files that define the appearance of your storefront.
-base - used as a fallback for files absent in adminhtml and frontend areas.
+- `global` (ou `base`) - Engloba todas as áreas e é usado como _fallback_ para arquivos ausentes nas áreas `frontend` e `adminhtml`
 
-`crontab` - In pub/cron.php, the \Magento\Framework\App\Cron class always loads the ‘crontab’ area.
+- `crontab` - É carregada quando as _crons_ são executadas. A classe `\Magento\Framework\App\Cron` sempre carrega a área `crontab`.
 
-`webapi_rest` - The REST area has a front controller that understands how to do URL lookups for REST-based URLs.
+- `webapi_rest` - Esta área responde pelas chamadas _REST_ da _API_ do Magneto 2.
 
-`webapi_soap` – The SOAP area.
+- `webapi_soap` – Refere-se às chamadas _SOAP_.
 
-#### Module/area interaction guidelines:
-
-Modules should not depend on other modules’ areas. Disabling an area does not result in disabling the modules related to it. Areas are registered in the Dependency Injection framework di.xml file.
-
-#### Magento request processing
-
-After the area name, the URI segment specifies the frontname. When an HTTP request arrives, Magento extracts the handle from the URL and interprets it as follows: `[frontName]/[controller folder]/[controller class]` where frontName is a value defined in the module. For example, in `catalog/product/view`, catalog is the name of the module used, product is the controller folder, and view is the controller class. For deeper directory structures, the controller folders are separated with _ (for example, `catalog/product_compare/add` for `Magento/Catalog/Controller/Product/Compare/Add.php`).
-
-Note that only the execute() method of any given controller is executed.
-
-#### Module dependencies and limitations
+#### Dependencias do módulo
 
 > A software dependency identifies one software component’s reliance on another for proper functioning. A core principle of Magento architecture is the **minimization of software dependencies**. Instead of being closely interrelated with other modules, modules are optimally designed to be loosely coupled. Loosely coupled modules require little or no knowledge of other modules to perform their tasks.
 
@@ -125,6 +117,7 @@ Modules are located in **vendor** directory or **app/code** directory.
 - The app directory is the recommended location for component development
 
 
+Módulos estão localizados, geralmente, no diretório _vendor_.  Modules are usually located in Magento 2 vendor directory. The vendor directory has the format: `vendor/<vendor>/<type>-<module-name>`. Where `<type>` is module, theme or language. 
 
 
 ## 1.2 Describe the Magento directory structure 
