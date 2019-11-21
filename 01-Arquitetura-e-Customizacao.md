@@ -16,7 +16,7 @@ No Magento existem 3 tipos de componentes:
 
 #### As áreas do Magento
 
-Há 6 áreas no Magento:
+Há 7 áreas no Magento:
 
 - `adminhtml` - A área adminhtml inclui o código necessário para o gerenciamento da loja. Refere-se ao painel administrativo (admin ou backend) do Magento. 
 - `frontend` - Refere-se à parte da loja na qual haverá a interação com o cliente (usuário final)
@@ -24,6 +24,7 @@ Há 6 áreas no Magento:
 - `crontab` - É carregada quando as _crons_ são executadas. A classe `\Magento\Framework\App\Cron` sempre carrega a área `crontab`.
 - `webapi_rest` - Esta área responde pelas chamadas _REST_ da _API_ do Magneto 2.
 - `webapi_soap` – Refere-se às chamadas _SOAP_.
+- `graphql` - Responde pelas chamadas GRAPHQL (essa área foi inserida a partir do Magento 2.3)
 
 Nem todas as áreas estão disponíveis todo o tempo. Por exemplo, a `crontab` é usada apenas ao executar tarefas cron.
 
@@ -119,15 +120,47 @@ Os módulos estão localizados nos diretórios **vendor** e **app/code**.
 Os arquivos JavaScript são encontrados na pasta `/view/<area>/web/`. Os HTML (com a extenção .phtml), na pasta `/view/<area>/templates`. E os arquivos PHP podem ser encontrados em qualquer pasta, com excessão da `/view/<area>/web/`.
 
 #### /Api: Service Contracts - Contratos de serviço
+
+Aqui ficam todas as intefáceis responsáveis pelos contratos de serviço (_services contracts_). Contém as classes que serão expostas na api do Magento. Exemplo `\Magento\Catalog\Api\CategoryListInterface`.
+
 #### /Api/Data: Data Service Contracts - Dados dos contratos de serviço
+
+Esta pasta contém interfaces que representam dados. Exemplos: _Product interface, Category interface_ e _Customer interface_.
+
 #### /Block: View Models
+
+Este diretório faz parte da camada View do MVC. Contém os _View Models_ para os templates do Magento. Os _blocks_ são as classes responsáveis por fazer a inteface entre o template e os _resource models_ do Magento para obter dados, trabalhá-los e passá-los para o template. Eles fornecem a lógica de negócio para os templates, que devem usar o mínimo de PHP (separação de responsábilidades).
+
 #### /Console: Console Commands
+
+Abriga os códigos para os comandos do `bin/magento`. Cada comando que aparece na listagem do CLI é referente à uma classe desse diretório.
+
 #### /Controller: Web Request Handlers
+
+Todos os _controllers_ do módulo ficam aqui. Cada _controller_ deve ter uma única responsábilidade (uma _Action_). Quando uma página é requisitada, o caminho é construído com parâmetros do arquivo `routes.xml` e dos _controllers_ do diretório `/Controller`.
+
 #### /Controller/Adminhtml: Admin controllers
+
+Aqui ficam os _controllers_ da área adminhtml.
+
 #### /Cron: Cron Job Classes
+
+Possui as crontabs que serão executadas no Magento (tarefas agendadas). 
+
 #### /etc: Configuration files
+
+Este diretório engloba todos os arquivos `.xml` de configuração do módulo. Aqui, as configurações podem ser globais (`etc/`) ou por área (`etc/frontend` ou `etc/adminhtml`).
+Alguns arquivos precisam estar dentro de uma área (`routes.xml` e `sections.xml`), outros devem ser globais (`acl.xml`) e outros podem ser globlais ou específicos de área (`di.xml`).
+
 #### /Helper: Occasionally useful for small, reusable code 
+
+Classes que contém métodos auxiliares (métodos estáticos), que não devem depender de outras classes.
+
 #### /i18n: Translation CSV Files
+
+Aqui estão todos os arquivos CSV de tradução. Esses CSVs possuem duas colunas: _de_ e _para_.
+
+
 #### /Model: Data Handling and Structures
 #### /Model/ResourceModel: Database Interactions
 #### /Observer: Event Listeners
