@@ -119,60 +119,188 @@ Os módulos estão localizados nos diretórios **vendor** e **app/code**.
 
 Os arquivos JavaScript são encontrados na pasta `/view/<area>/web/`. Os HTML (com a extenção .phtml), na pasta `/view/<area>/templates`. E os arquivos PHP podem ser encontrados em qualquer pasta, com excessão da `/view/<area>/web/`.
 
-#### /Api: Service Contracts - Contratos de serviço
+#### Estrutura de arquivos do Magento
+
+##### ./app/
+
+Contém módulos, temas, traduções e configurações globais.
+- `./app/code/`: módulos
+- `./app/design/`: temas
+- `./app/etc/`: configurações globais
+- `./app/i18n/`: traduções
+
+##### ./bin/
+
+O script executável da CLI do Magento. Daqui vem o comando `bin/magento`.
+
+##### ./dev/
+
+Ferramentas para desenvolvedores. Armazena testes funcionais automatizados que foram executados pelo Magento Test Framework.
+
+##### ./generated/
+
+Aqui é armazenado os códigos gerados automaticamente pelo Magento, como _Factories_, _Proxies_, _Interceptors_ etc. Na configuração padrão, se a classe for injetada em um construtor, o código será gerado pelo Magento para criar _non-existent factory classes_. 
+
+##### ./lib/
+
+Este diretório contém todos os arquivos de bibliotecas do Magento e do `vendor`. Ele também inclui todo o código Magento não baseado em módulo.
+
+##### ./phpserver/
+
+Aqui fica o arquivo `Router.php`, o qual é usado para implementar o servidor _built-in_ do PHP. No entanto, por questões de segurança, não é recomendável trabalhar com ele. Serve para casos específicos.
+
+##### ./pub/
+
+Inclui os arquivos públicos do Magento, como arquivos estáticos (css, imagens, js etc) e páginas de erro. Quando em produção, o Magento deve apontar para esta pasta. Isto tráz segurando à aplicação por proteger a raiz da instalação. 
+- `pub/errors` - erros
+- `pub/media` - imagens
+- `pub/opt`
+- `pub/static` - arquivos gerados pelo Magento
+- `pub/cron.php`
+- `pub/index.php`
+
+##### ./setup/
+
+Aqui tem os arquivos do instalador do Magento. 
+
+##### ./var/
+
+Arquivos temporários/gerados como classes, seções, cachê, _backups_ de banco de dados e erros.
+- `var/log`: arquivos de log do sistema, como `exception.log` e `system.log`.
+- `var/cache`: contém todo o cachê do Magneto. Esta pasta é limpa quando rodamos o `bin/magento cache:clean`
+- `var/di`: gerado pelo `bin/magento setup:di:compile`
+
+##### ./vendor/
+
+Diretório nativo do _Composer_. Contém o _framework core_. Tudo o que for instalado pelo _Composer_ vem para este diretório.
+Aqui encontram-se todos os módulos do Magento.
+
+
+#### Estrutura de arquivos dos temas
+
+##### /etc
+
+Arquivos de configuração como o view.xml
+
+##### /i18n
+
+Dicionários de tradução do tema
+
+##### /media
+
+Imagens de pré-visualização do tema.
+
+##### /web
+Arquivos estáticos.
+
+- `web/css/source`: arquivos de configuração _LESS_ do tema
+- `web/css/source/lib`: Inclui arquivos de exibição que substituem os arquivos de biblioteca da UI armazenados em `lib/web/css/source/lib`
+- `web/fonts`: arquivos de fonte
+- `web/images`: imagens
+- `web/js`: arquivos JavaScript
+
+#### Estrutura de arquivos dos módulos
+
+##### /Api: Service Contracts - Contratos de serviço
 
 Aqui ficam todas as intefáceis responsáveis pelos contratos de serviço (_services contracts_). Contém as classes que serão expostas na api do Magento. Exemplo `\Magento\Catalog\Api\CategoryListInterface`.
 
-#### /Api/Data: Data Service Contracts - Dados dos contratos de serviço
+##### /Api/Data: Data Service Contracts - Dados dos contratos de serviço
 
 Esta pasta contém interfaces que representam dados. Exemplos: _Product interface, Category interface_ e _Customer interface_.
 
-#### /Block: View Models
+##### /Block: View Models
 
 Este diretório faz parte da camada View do MVC. Contém os _View Models_ para os templates do Magento. Os _blocks_ são as classes responsáveis por fazer a inteface entre o template e os _resource models_ do Magento para obter dados, trabalhá-los e passá-los para o template. Eles fornecem a lógica de negócio para os templates, que devem usar o mínimo de PHP (separação de responsábilidades).
 
-#### /Console: Console Commands
+##### /Console: Console Commands
 
 Abriga os códigos para os comandos do `bin/magento`. Cada comando que aparece na listagem do CLI é referente à uma classe desse diretório.
 
-#### /Controller: Web Request Handlers
+##### /Controller: Web Request Handlers
 
 Todos os _controllers_ do módulo ficam aqui. Cada _controller_ deve ter uma única responsábilidade (uma _Action_). Quando uma página é requisitada, o caminho é construído com parâmetros do arquivo `routes.xml` e dos _controllers_ do diretório `/Controller`.
 
-#### /Controller/Adminhtml: Admin controllers
+##### /Controller/Adminhtml: Admin controllers
 
 Aqui ficam os _controllers_ da área adminhtml.
 
-#### /Cron: Cron Job Classes
+##### /Cron: Cron Job Classes
 
 Possui as crontabs que serão executadas no Magento (tarefas agendadas). 
 
-#### /etc: Configuration files
+##### /etc: Configuration files
 
 Este diretório engloba todos os arquivos `.xml` de configuração do módulo. Aqui, as configurações podem ser globais (`etc/`) ou por área (`etc/frontend` ou `etc/adminhtml`).
 Alguns arquivos precisam estar dentro de uma área (`routes.xml` e `sections.xml`), outros devem ser globais (`acl.xml`) e outros podem ser globlais ou específicos de área (`di.xml`).
 
-#### /Helper: Occasionally useful for small, reusable code 
+##### /Helper: Occasionally useful for small, reusable code 
 
 Classes que contém métodos auxiliares (métodos estáticos), que não devem depender de outras classes.
 
-#### /i18n: Translation CSV Files
+##### /i18n: Translation CSV Files
 
 Aqui estão todos os arquivos CSV de tradução. Esses CSVs possuem duas colunas: _de_ e _para_.
 
+##### /Model: Data Handling and Structures
 
-#### /Model: Data Handling and Structures
-#### /Model/ResourceModel: Database Interactions
-#### /Observer: Event Listeners
-#### /Plugin: Function Modification
-#### /Setup: Database Modification
-#### /Test:
-#### /Ui: UI Component Data Providers
-#### /view/[area]/templates: Block Templates
-#### /view/adminhtml/ui_component: UI Components
-#### /view/[area]/web: Web Assets
-#### /view/[area]/web/template: JS Templates
-#### /view/[area]/requirejs-config.js
+Nesta pasta ficam os _Models_, classes que lidam diretamente com o banco de dados. 
+
+##### /Model/ResourceModel: Database Interactions
+
+Aqui são as classes que definem como os dados devem ser recuperados e salvos no banco de dados. Qualquer interação direta com o bando de dados deve acontecer nesses arquivos.
+
+##### /Observer: Event Listeners
+
+Todos os _Observers_ são incluídos neste diretório. Quando o Magento dispara um evento, as classes que estão observando esse evento são chamadas. Os _event listeners_ devem implementar o `ObserverInteface` (`\Magento\
+Framework\Event\ObserverInterface`). A classe PHP deve serguir o padrão _TitleCase_ enquanto o evento deve seguir o _snake_case_. 
+Deve-se evitar colocar lógica de negócio em um observer. O correto seria injetá-la no _Observer_. 
+
+##### /Plugin: Function Modification
+
+O conceito de _Plugin_ foi introduzido no Magento 2. Os _Plugins_ permitem modificar funcionalidades da maioria das classes e interfaces. Plugins funcionam apenas em objetos que foram instanciados pelo _ObjectManager_. Por convenção, os plugins são colocados no diretório `/Plugin`.
+
+##### /Setup: Database Modification
+
+Os arquivos que modificam o banco de dados durante a instalação ou atualização de um módulo são colocados neste diretório. 
+Os arquivos utilizados aqui são:
+
+- `InstallSchema.php`: configura o esquema de tabelas e/ou colunas na ocasião da instalação do módulo.
+- `UpgradeSchema.php`: modifica as tabelas e colunas quando a versão do módulo é atualizada.
+- `Recurring.php`: É executado depois de todas as instalações ou atualizações.
+- `InstallData.php`: Configura dados quando o módulo é instalado.
+- `UpgradeData.php`: Modifica dados quando o módulo é atualizado.
+- `RecurringData.php`: aplica-se aos dados após cada instalação ou atualização.
+
+##### /Test:
+
+O Magento 2 adotou o TDD (Test Driven Development). Todos os testes ficam neste diretório.
+
+##### /Ui: UI Component Data Providers
+
+Aqui ficam todos os _Models_ utilizados pelos componentes UI.
+
+##### /view/[area]/templates: Block Templates
+
+Enquanto a lógica de negócio é representada nos `Blocks`, a forma como essa lógica é apresentada ao usuário é definida nos arquivos de template. Esses arquivos devem conter o mínimo possível de PHP. 
+Observação: note que o nome desta pasta é escrito no plural: templates.
+
+##### /view/adminhtml/ui_component: UI Components
+
+Este diretório contêm os arquivos XML de configuração dos _UI Components_. Eles flexibilizam a renderização da interface do usuário. _Grids_ e _Forms_ do admin, bem como o _checkout_ são feitos com _UI Components_.
+
+##### /view/[area]/web: Web Assets
+
+Este é o lugar onde os recursos da Web são armazenados. Isso inclui JS, CSS (ou LESS / SCSS) e imagens.
+
+##### /view/[area]/web/template: JS Templates
+
+Os modelos HTML que podem ser solicitados de forma assíncrona com Javascript são colocados aqui.
+Observação: cuidado para não confundir. O nome desta pasta é no singular, template.
+
+##### /view/[area]/requirejs-config.js
+
+Aqui ficam as configurações RequireJS do módulo. Essa configuração é usada para controlar as dependências do módulo Javascript, criar aliases e declarar mixins
 
 ### Quais são as convenções de nome e como os _namespaces_ são estabelecidos?
 
