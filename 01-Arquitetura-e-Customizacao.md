@@ -302,11 +302,29 @@ Observação: cuidado para não confundir. O nome desta pasta é no singular, te
 
 Aqui ficam as configurações RequireJS do módulo. Essa configuração é usada para controlar as dependências do módulo Javascript, criar aliases e declarar mixins
 
-### Quais são as convenções de nome e como os _namespaces_ são estabelecidos?
+### Quais são as convenções de nome e como os _namespaces_ são estabelecidos? Como identificar os arquivos responsáveis por uma certa funcionalidade?
 
+> ###### Preciso melhorar essa parte. Desculpe, ainda não pude fazer isso.
 
-### Como identificar os arquivos responsáveis por uma certa funcionalidade?
+Os _namespaces_ são utilizados para evitar conflitos de nomes no código. Eles ajudam a deixar as coisas organizadas. No PHP, um _namespace_ determina onde o arquivo PHP está localizado na hierarquia do _namespace_. Assim, o nome da classe pode ser reutilizado em _namespaces_ diferentes.
+
+> Para referenciar uma classe, usamos a palavra-chave `::class`. Ex.: `$this->get(ClassName::class);` ou `$this->get(\Magento\Path\To\Class::class);`.
+
+#### Semântica
+
+1. Para nomes de atributos e valores, deve-se utilizar palavras escritas em minúsculo, não abreviadas, com caracteres do Latin e concatenadas com hífen (-)
+Exemplo:
+```php
+<section id="information-dialog-tree">
+   <p> ... </p>
+   <p> ... </p>
+</section>
+<a href="#information-dialog-tree">Scroll to text</a></a>
+```
+
 Alguns diretórios já estão definidos, por convenção, para serem responsáves por certas funcionalidades. Eles foram descritos nesta seção. Contudo, um módulo pode conter um diretório específico para alguma funcionalidade pouco comum. Nestes casos, é necessário inspecionar o diretório para averiguar a funcionalidade pela qual ele é responsável.
+
+O _namespace_ e o nome da classe auxiliam para identificar o arquivo. Por exemplo, o caminho do arquivo da classe PHP `TestCommand` do namespace `Magenteiro\PrimeiroModulo\Console\Command` é o `app/code/Magenteiro/PrimeiroModulo/Console/Command/TestCommand.php`.
 
 ## 1.3 Utilize configuration and configuration variables scope 
 Determine how to use configuration files in Magento. Which configuration files are important in the development cycle? 
