@@ -335,33 +335,66 @@ Logo abaixo, estão relacionados os principais arquivos de configuração do Mag
 
 #### `module.xml`
 
+É o único arquivo de configuração obrigatório. Nele são especificados a versão do módulo e sua ordem de carregamento.
+
 #### `acl.xml`
+
+_Access Control List Rules (ACL)_. Aqui são definidas as permissões de acesso dos usuários à recursos. 
 
 #### `config.xml`
 
+Carregado na configuração padrão (`Stores > Configuration`). 
+
 #### `crontab.xml`
+
+Para os trabalhos agendados.
 
 #### `di.xml`
 
+É um dos arquivos mais utilizados quando estamos personalizando o Magento. Aqui são configuradas as injeções de dependência: plugins são definidos, classes são substituídas, classes concretas são especificadas, dentre outros.
+
 #### `email_templates.xml`
+
+Determina os templates de e-mail que serão usados no Magento.
 
 #### `events.xml`
 
+Esse arquivo frequentemente é criado dentro de uma área específica. Nele são registrados os _event listeners_.
+
 #### `indexer.xml`
+
+Configura os indexadores do Magento.
 
 #### `adminhtml/menu.xml`
 
+Configura um menu na área adminhtml.
+
 #### `adminhtml/system.xml`
+
+Aqui são definidas as _tabs_, _sections_, _groups_ e _fields_ que existem na configuração da loja (`Stores > Configuration`).
 
 #### `mview.xml`
 
+Usado frequentemente para o processo de indexação, aqui é configurado o disparo de um evento quando uma coluna do banco de dados é alterada.
+
 #### `<area>/routes.xml`
+
+Diz ao Magento que a área aceita _web requests_. O nó da rota configura a primeira parte do _layout handle_ (ID da rota) e o _frontname_ (primeira parte da URL após o domínio).
 
 #### `view.xml`
 
+Especifica valores padrão para configurações relacionadas ao design. É semelhante ao `config.xml`.
+
 #### `webapi.xml`
 
+Configura a web API. 
+
 #### `widget.xml`
+
+Configura os widgets para serem usados com páginas ou blocos CMS e produtos.
+
+#### Mais arquivos de configuração: [DevDocs - Module configuration files](https://devdocs.magento.com/guides/v2.2/config-guide/config/config-files.html#config-files-classes-objects)
+
 
 ### Descrever o desenvolvimento no contexto dos escopos website e store. Como você pode identificar o escopo de configuração para uma certa variável? Como os escopos nativos da Magento (por exemplo, preço ou estoque) podem afetar o desenvolvimento e o processo de tomada de decisão?
 
