@@ -1,4 +1,4 @@
-<img align="left" src="https://u.magento.com/media/catalog/product/cache/17/small_image/92x165/9df78eab33525d08d6e5fb8d27136e95/a/s/assoc_dev-l.png">
+<img align="right" src="https://u.magento.com/media/catalog/product/cache/17/small_image/92x165/9df78eab33525d08d6e5fb8d27136e95/a/s/assoc_dev-l.png">
 
 # MAGENTO 2 ASSOCIATE DEVELOPER CERTIFICATION
 Anotações realizadas durante os meus estudos para a certificação **Associated Developer** da Magento. Caso possua uma sugestão ou correção, é só me escrever. :)
