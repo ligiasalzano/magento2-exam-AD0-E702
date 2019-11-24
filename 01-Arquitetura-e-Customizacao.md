@@ -314,7 +314,7 @@ Os _namespaces_ são utilizados para evitar conflitos de nomes no código. Eles 
 
 1. Para nomes de atributos e valores, deve-se utilizar palavras escritas em minúsculo, não abreviadas, com caracteres do Latin e concatenadas com hífen (-)
 Exemplo:
-```php
+```html
 <section id="information-dialog-tree">
    <p> ... </p>
    <p> ... </p>
@@ -326,10 +326,46 @@ Alguns diretórios já estão definidos, por convenção, para serem responsáve
 
 O _namespace_ e o nome da classe auxiliam para identificar o arquivo. Por exemplo, o caminho do arquivo da classe PHP `TestCommand` do namespace `Magenteiro\PrimeiroModulo\Console\Command` é o `app/code/Magenteiro/PrimeiroModulo/Console/Command/TestCommand.php`.
 
-## 1.3 Utilize configuration and configuration variables scope 
-Determine how to use configuration files in Magento. Which configuration files are important in the development cycle? 
-Describe development in the context of website and store scopes. How do you identify the configuration scope for a given variable? How do native Magento scopes (for example, price or inventory) affect development and decision-making processes? 
-Demonstrate an ability to add different values for different scopes. How can you fetch a system configuration value programmatically? How can you override system configuration values for a given store using XML configuration?
+## 1.3 Utilizar configuração e escopo de variáveis de configuração
+
+### Determinar como usar os arquivos de configuração na Magento. Quais arquivos de configuração são importantes no ciclo de desenvolvimento?
+
+O Magento 2 dividiu as configurações em vários arquivos XML, isso evita que tenhamos apenas um arquivo muito longo. Adicionalmente, podemos separar os arquivos em áreas, restringindo determinada configuração à área a qual ela afeta.
+Logo abaixo, estão relacionados os principais arquivos de configuração do Magento. Eles estão localizados no diretório `/etc` do módulo.
+
+#### `module.xml`
+
+#### `acl.xml`
+
+#### `config.xml`
+
+#### `crontab.xml`
+
+#### `di.xml`
+
+#### `email_templates.xml`
+
+#### `events.xml`
+
+#### `indexer.xml`
+
+#### `adminhtml/menu.xml`
+
+#### `adminhtml/system.xml`
+
+#### `mview.xml`
+
+#### `<area>/routes.xml`
+
+#### `view.xml`
+
+#### `webapi.xml`
+
+#### `widget.xml`
+
+### Descrever o desenvolvimento no contexto dos escopos website e store. Como você pode identificar o escopo de configuração para uma certa variável? Como os escopos nativos da Magento (por exemplo, preço ou estoque) podem afetar o desenvolvimento e o processo de tomada de decisão?
+
+### Demonstrar capacidade de adicionar valores diferentes para diferentes escopos. Como você pode buscar o valor de uma configuração do sistema por meio de programação? Como você pode substituir os valores de uma configuração do sistema para uma determinada loja usando a configuração XML?
 
 ## 1.4 Demonstrate how to use dependency injection (DI) 
 Demonstrate the ability to use the dependency injection concept in Magento development. How are objects realized in code? Why is it important to have a centralized object creation process?
