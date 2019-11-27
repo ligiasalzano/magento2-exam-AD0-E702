@@ -66,3 +66,19 @@ Dois menus importantes: **Store** e **System**
   - Stores > Currency > Currency Rates 
 
 ## UNIT 2
+
+- Categorias
+  - Categorias são gerenciadas em **Catalog > Categories**
+  - Há dois tipos de categorias: root category e subcategory
+  - Categorias podem exibir somente produtos, somente material promocional ou uma combinação de ambos
+  - subcategorias ficam aninhadas dentro de uma root category ou de outras subcategorias
+  - O mesmo produto pode ser incluído em mais de uma categoria
+  
+- Category Landing Page Appearance
+  - Page view: grid ou list view
+  - Configurações de aparência da categoria são feitas em:
+    - Store > Settings > Configuration > CATALOG > Catalog > Storefront
+  - Os usuários podem ver os produtos numa categoria como lista ou como grid
+  - Você pode controlar os valores de paginação 
+  - Você pode escolher se o usuário poderá ver todos os produtos de uma categoria
+  - Categorias podem ser ordenadas por atributos definidos pelo administrador
