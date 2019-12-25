@@ -426,16 +426,81 @@ A _proxy_ é especificada no `di.xml` em uma classe como `\Magento\Catalog\Model
 Para objetos que precisam se criados todas as vezes que são usados, existem as _factories_. Para especificar uma _factory_, inclua a palavra _Factory_ no final da classe ou interface. Exemplo: `\Magento\Catalog\Api\Data\ProductInterfaceFactory`.
 
 
-### Demonstrar a capacidade de usar o conceito de injeção de dependência no desenvolvimento Magento. Como os objetos são identificados no código? Por que é importante ter um processo centralizado de criação de objetos?
+### Demonstrar a capacidade de usar o conceito de injeção de dependência no desenvolvimento Magento. 
+
+#### Como os objetos são identificados no código?
+
+No Magento 1 os objetos são manipulados com o uso da classe Mage. 
+No Magento 2, usamos o Gerenciador de Objetos (_ObjectManager_) e a Injeção de Dependências (_Dependency Injection_), que substituíram a funcionalidade fornecida pela classe Mage.
+
+Como a injeção de dependência acontece automaticamente no construtor, o Magento deve lidar com a criação de classes. Como tal, a criação de classe acontece no momento da injeção ou com uma _factory_.
+
+#### Por que é importante ter um processo centralizado de criação de objetos?
+Ter um processo centralizado para criar objetos facilita muito o teste. Ele também fornece uma interface simples para substituir objetos e modificar os existentes.
+É a criação centralizada de objetos que torna possível vantagens como:
+- Usar a injeção de dependência automática permitindo que você faça injeções de código no código existente. Podemos criar variações da classe sem modificar a classe original. Ao usar o ObjectManager para criação de classes, as dependências são substituídas automaticamente no construtor da classe.
+- Torna-se possível injetar as dependências da classe no construtor da classe por meio do arquivo di.xml.
+- Permite evitar a herança, o que significa que os aplicativos se tornam mais flexíveis. Assim, você não precisa pensar nas classes filho ao alterar a classe pai.
 
 ### Identifique como usar arquivos de configuração DI para personalizar a plataforma Magento. Como você pode substituir uma classe nativa, injetar sua classe em outro objeto e usar outras técnicas disponíveis no di.xml (por exemplo,virtualTypes)?
 
+Para fazer essas personalizações no Magento 2, você precisa usar o arquivo de configuração `<moduleDir>/etc/di.xml`
+
+#### Como substituir uma classe nativa
+> Se houver a possibilidade de usar _plugin_, evite sobreescrever uma classe. Isso pode gerar conflitos.
+Para substituir uma classe nativa, use uma entrada `<preference />` para especificar o nome da classe existente (a barra invertida anterior \ é opcional) e a classe a ser substituída.
+As preferências são usadas para substituir classes inteiras. Eles também podem ser usados para especificar uma classe concreta para uma interface.
+```xml
+<config>
+    <preference for="Magento\Catalog\Api\Data\ProductInterface" type=YourVendor\Catalog\Model\Product" />
+</config>
+```
+
+#### Como injetar uma classe em outro objeto
+Use uma entrada `<type/>` com uma entrada `<argument xsi:type="object">\Path\To\Your\Class</argument>` dentro do nó `<arguments/>`.
+Exemplo: `Magento\Sales\Model\ResourceModel\Provider\UpdatedIdListProvider` é a nossa classe que queremos injetar e `vendor/magento/module-sales/Model/ResourceModel/Provider/NotSyncedDataProvider.php`é o objeto de classe no qual vamos injetar a nossa classe.
+
+```xml
+<type name="Magento\Sales\Model\ResourceModel\Provider\NotSyncedDataProvider">
+ <arguments>
+   <argument name="providers" xsi:type="array">
+       <item name="default" xsi:type="string">Magento\Sales\Model\ResourceModel\Provider\UpdatedIdListProvider</item>
+   </argument>
+ </arguments>
+</type>
+```
+
+#### Virtual Types
+
+Um _Virtual Type_ permite que o desenvolvedor crie uma instância de uma classe existente que possui argumentos de construtor personalizados. Isso é útil nos casos em que você precisa de uma classe "nova" apenas porque os argumentos do construtor precisam ser alterados. Isso é usado frequentemente no Magento para reduzir classes PHP redundantes.
+
+_Virtual Types_ são convenientes para DI apenas no caso de precisarmos indicar nossas classes nas dependências. Dessa forma, você não precisa criar uma classe separada.
+
+```xml
+<virtualType name="pdfConfigDataStorage" type="Magento\Framework\Config\Data">
+    <arguments>
+        <argument name="reader" xsi:type="object">Magento\Sales\Model\Order\Pdf\Config\Reader</argument>
+        <argument name="cacheId" xsi:type="string">sales_pdf_config</argument>
+    </arguments>
+</virtualType>
+<type name="Magento\Sales\Model\Order\Pdf\Config">
+    <arguments>
+        <argument name="dataStorage" xsi:type="object">pdfConfigDataStorage</argument>
+    </arguments>
+</type>
+```
+
+
 ### Dado um cenário, determinar como obter um objeto usando o objeto ObjectManager. Como você obteria uma instância de classe de diferentes locais no código?
+Podemos acessar uma classe de duas formas:
+#### Com PHP puro:
+Com ```php $object = new SomeClass();```.
+
+#### Com o ObjectManager (preferencialmente):
+Usando o ```php $objectManager->create(‘SomeClass’);``` ou ```php $objectManager->get(‘SomeClass’);```.
+O método _create_ instancia um novo objeto cada vez que é chamado. O método _get_ instancia um objeto uma vez e, em chamadas futuras, o _get_ retorna o mesmo objeto. Esse comportamento é semelhante às _factories_ `getModel` e `getSingleton` do Magento 1
 
 
-Demonstrate the ability to use the dependency injection concept in Magento development. How are objects realized in code? Why is it important to have a centralized object creation process?
-Identify how to use DI configuration files for customizing Magento. How can you override a native class, inject your class into another object, and use other techniques available in di.xml (for example, virtualTypes)? 
-Given a scenario, determine how to obtain an object using the ObjectManager object. How would you obtain a class instance from different places in the code? 
 
 ## 1.5 Demonstrate ability to use plugins 
 Demonstrate an understanding of plugins. How are plugins used in core code? How can they be used for customizations? 
