@@ -58,3 +58,4 @@ Anotações realizadas durante os meus estudos para a certificação **Associate
 - [Magenteiro](https://www.magenteiro.com/)
 - [Repositório: magento-notes/magento2-exam-notes](https://github.com/magento-notes/magento2-exam-notes)
 - [MagedIn University](https://university.magedin.com/curso/iniciando-o-desenvolvimento-em-magento-2)
+- [Amasty Blog](https://amasty.com/blog/magento-2-certification-dependency-injection-approach-and-architecture/)
