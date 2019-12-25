@@ -400,7 +400,39 @@ Configura os widgets para serem usados com páginas ou blocos CMS e produtos.
 
 ### Demonstrar capacidade de adicionar valores diferentes para diferentes escopos. Como você pode buscar o valor de uma configuração do sistema por meio de programação? Como você pode substituir os valores de uma configuração do sistema para uma determinada loja usando a configuração XML?
 
-## 1.4 Demonstrate how to use dependency injection (DI) 
+## 1.4 Demonstrar como usar a injeção de dependência (DI)
+
+> A injeção de dependência (**Dependency Injection - DI**) é uma forma de dar à uma classe o que ela precisa para funcionar. 
+
+A injeção de dependência é um padrão de design que permite declarar dependências de objetos no Magento 2. A utilização da DI permite desenvolver um código mais estrutural e independente tornando o processo de codificação mais conveniente.
+O Magento usa a injeção de construtor, todas as dependências são especificadas como argumentos na função `__construct()`.
+
+#### ObjectManager
+O `ObjectManager` é a unidade interna de armazenamento de objetos do Magento e raramente deve ser acessada diretamente. Ele torna possível a implementação do princípio de composição sobre herança.
+> O Magento proíbe o uso direto do ObjectManager no seu código porque oculta as dependências reais de uma classe. Veja as [regras de uso](https://devdocs.magento.com/guides/v2.2/extension-dev-guide/object-manager.html#usage-rules).
+
+Responsabilidades do `ObjectManager`:
+- Criação de objetos _factories_ e _proxies_
+- Instanciar automaticamente parâmetros em construtores de classe
+- Gerenciar dependências instanciando a classe de preferência quando um construtor solicita sua interface
+- Implementar o padrão _singleton_ retornando a mesma instância compartilhada de uma classe quando solicitado
+
+#### Proxies
+As _proxies_ são usadas para a criação de objetos que demandam mais tempo para carregar. Nesses casos, uma classe _proxy_ lento carrega a classe. 
+A _proxy_ é especificada no `di.xml` em uma classe como `\Magento\Catalog\Model\Product\Proxy`. 
+> _Proxies_ não devem ser especificadas no método construtor.
+
+#### Factories
+Para objetos que precisam se criados todas as vezes que são usados, existem as _factories_. Para especificar uma _factory_, inclua a palavra _Factory_ no final da classe ou interface. Exemplo: `\Magento\Catalog\Api\Data\ProductInterfaceFactory`.
+
+
+### Demonstrar a capacidade de usar o conceito de injeção de dependência no desenvolvimento Magento. Como os objetos são identificados no código? Por que é importante ter um processo centralizado de criação de objetos?
+
+### Identifique como usar arquivos de configuração DI para personalizar a plataforma Magento. Como você pode substituir uma classe nativa, injetar sua classe em outro objeto e usar outras técnicas disponíveis no di.xml (por exemplo,virtualTypes)?
+
+### Dado um cenário, determinar como obter um objeto usando o objeto ObjectManager. Como você obteria uma instância de classe de diferentes locais no código?
+
+
 Demonstrate the ability to use the dependency injection concept in Magento development. How are objects realized in code? Why is it important to have a centralized object creation process?
 Identify how to use DI configuration files for customizing Magento. How can you override a native class, inject your class into another object, and use other techniques available in di.xml (for example, virtualTypes)? 
 Given a scenario, determine how to obtain an object using the ObjectManager object. How would you obtain a class instance from different places in the code? 
