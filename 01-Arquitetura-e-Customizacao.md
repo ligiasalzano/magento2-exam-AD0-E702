@@ -514,8 +514,41 @@ O método _create_ instancia um novo objeto cada vez que é chamado. O método _
 - É bom evitar o uso de plugins em situações em que um _observer_ funcione.
 
 
-## 1.6 Configure event observers and scheduled jobs 
-Demonstrate how to create a customization using an event observer. How are observers registered? How are they scoped for frontend or backend? How are automatic events created, and how should they be used? How are scheduled jobs configured?
+## 1.6 Configurar event observers e trabalhos agendados (scheduled jobs)
+
+> _Observers_ e _scheduled jobs_ não devem ser usados para modificar dados. Para isso, use plugins.
+
+### Demonstrar como criar uma customização usando um event observer. 
+
+#### Como os observers são registrados? Como eles são definidos para frontend ou backend? 
+Os _observers_ são criados no arquivo `events.xml`, no diretório `/etc`. Se o evento for específico para uma área (backend ou frontend), é criado um diretório para a área requerida. 
+Ex.: `/etc/[area]/events.xml` - `/etc/frontend/` e `/etc/adminhtml/`.
+
+O evento é registrado no nó `<events>`:
+```xml
+<event name="event_for_your_observer_to_listen_for">
+   <observer name="observerName" instance="Your\Observer\Class" />
+</event>
+```
+
+#### Como os eventos automáticos são criados e como eles devem ser usados?
+Eventos devem ser usados quando não se quer modificar dados. Eles podem ser acionados injetando uma instância do `Magento\Framework\Event\ManagerInterface` no construtor e chamando: ```php $this->eventManager->dispatch('event_name', [params]);```.
+
+#### Como os trabalhos agendados (scheduled jobs) são configurados?
+Os trabalhos agendados são configurados no arquivo `crontab.xml`, dentro do diretório `/etc` (não em `/etc/[area]`).
+Para configurar um trabalho agendado, é necessário atribuir um nome a ele, especificar a função que ele deve executar, a classe à qual essa função pertence e definir o agendamento usando a notação regular de agendamento cron.
+```xml
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"    
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="default">
+        <job name="cron_job_name"
+             instance="Path\To\Your\Class"
+             method="execute">
+            <schedule>*/5 * * * *</schedule>
+        </job>
+    </group>
+</config>
+```
 
 ## 1.7 Utilize the CLI 
 Describe the usage of bin/magento commands in the development cycle. Which commands are available? How are commands used in the development cycle? 
