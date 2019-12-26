@@ -502,8 +502,17 @@ O método _create_ instancia um novo objeto cada vez que é chamado. O método _
 
 
 
-## 1.5 Demonstrate ability to use plugins 
-Demonstrate an understanding of plugins. How are plugins used in core code? How can they be used for customizations? 
+## 1.5 Demonstrar habilidade no uso de plugins 
+
+### Demonstrar entendimento dos plugins. Como os plugins são usados no código base? Como eles podem ser usados para personalizações?
+
+- Existem 3 tipos de plugins: _before_, _after_ e _around_. São úteis para modificar a entrada, saída ou execução de um método existente (cuidado com os plugins do tipo _around_).
+- Plugins funcionam apenas em métodos públicos (não em privados ou protegidos)
+- Plugins não funcionam em classes virtuais e finais, métodos finais, estáticos e não públicos, construtores e objetos instanciados antes da inicialização do `Magento\Framework\Interception`.
+- Eles são configurados no `di.xml`
+- Plugins podem ser usados em interfaces, classes abstratas ou classes pai. Os métodos de plugin serão chamados para qualquer implementação dessas abstrações.
+- É bom evitar o uso de plugins em situações em que um _observer_ funcione.
+
 
 ## 1.6 Configure event observers and scheduled jobs 
 Demonstrate how to create a customization using an event observer. How are observers registered? How are they scoped for frontend or backend? How are automatic events created, and how should they be used? How are scheduled jobs configured?
