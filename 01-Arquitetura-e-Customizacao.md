@@ -550,9 +550,20 @@ Para configurar um trabalho agendado, é necessário atribuir um nome a ele, esp
 </config>
 ```
 
-## 1.7 Utilize the CLI 
-Describe the usage of bin/magento commands in the development cycle. Which commands are available? How are commands used in the development cycle? 
+## 1.7 Utilizar o CLI 
 
-## 1.8 Describe how extensions are installed and configured 
-How would you install and verify an extension by a customer’s request?
+### Descreva o uso dos comandos bin/magento no ciclo de desenvolvimento. 
+
+#### Quais comandos estão disponíveis? 
+Uma lista completa de comandos pode ser encontrada executando `bin/magento`. 
+Todos os comandos podem ser executados no diretório raiz da instalação Magento através da linha de comando, prefixada com `bin/magento`.
+
+#### Como os comandos são usados no ciclo de desenvolvimento?
+Os comandos da CLI fornecem um ponto de entrada seguro para a realização de operações que podem ser inseguras para serem executadas no painel de administração do Magento. O acesso SSH deve ser uma maneira segura de verificar o status de autorização de um usuário.
+A ativação de módulos e a execução de scripts de instalação devem ser feitos usando a linha de comando durante o desenvolvimento. Geralmente, é mais rápido alternar o cache das seções ou liberá-lo durante o desenvolvimento usando a linha de comando em comparação com a interface administrativa.
+
+
+## 1.8 Descrever como as extensões são instaladas e configuradas
+#### Como você instalaria e verificaria uma extensão a partir da solicitação do cliente?
+Extenções podem ser instaladas diretamente no diretório `app/code` ou através do composer (no diretório `vendor`). Após os arquivos estarem no local correto, o módulo é habilitado `bin/mangento module:enable nome_modulo` e, então, é usado o `bin/magento setup:upgrade` para registrá-lo na aplicação.
 
