@@ -48,10 +48,29 @@ Para salvar uma lista de IPs, você pode usar: `magento maintenance:allow-ips <i
 > Uma maneira de encontrar esses processos é executar o comando `ps -ef | grep queue:consumer:start`. E então executar o comando `kill <process_id>` para cada consumidor. Em um ambiente com vários nós, certifique-se de repetir esta tarefa em cada nó.
 
 
-### 2.2 Demonstrate the ability to create a frontend controller with different response types (HTML / JSON / redirect) 
+### 2.2  Demonstrar a capacidade de criar um controller frontend com diferentes tipos de resposta (HTML/JSON/redirect)
 
-**How do you identify which module/controller corresponds to a given URL?**
-**What would you do to create a given URL?**
+#### Como você identifica qual módulo/controller corresponde para um determinado URL? 
+
+O Magento determina a área baseado no _frontname_ (`\Magento\Framework\App\AreaList::getCodeByFrontName`). Se nenhum _frontname_ corresponder, a área do _frontname_ padrão é carregada.
+Se a solicitação não for para a API, o Magento analisa o URL. Essa operação é tratada pelo `\Magento\Framework\App\Router\Base::parseRequest`. O caminho (o segmento após o domínio) é explodido com a barra como delimitador.
+
+O formato de uma url é esse: `sualoja.com/nome_da_rota/nome_do_controller/action`.
+
+Exemplo: sualoja.com/catalog/product/view/id/42
+- Primeira parte: **_frontname_** é o primeiro parâmetro. Nesse caso é o _catalog_. Ele é configurado em `etc/[area]/routes.xml`. 
+- Segunda parte: é o caminho para a parte que contém o arquivo do _contoller_. É onde está a ação. Nesse caso, dentro do caminho `Controller/Product/`.
+- Terceira parte: é o nome da _action_. Nesse caso, o Magento produra o arquivo `View.php` e roda a método `execute()` dentro dele.
+- O final: `/id/42` corresponde à um parâmetro. É o mesmo que `id=42`.
+
+
+#### O que você faria para criar um determinado URL?
+O URL pode ser criado de várias formas.
+- Definindo o atributo `url_key` para categorias e produtos.
+- Criando um _URL rewrite_ em `Marketing > SEO & Search > URL Rewrites`
+- Dentro de um módulo, criando o frontname no arquivo `My_Company/My_Module/etc/[area]/routes.xml` e o _controller_ em `My_Company/My_Module/Controller/MyController/ActionFile.php`. Observação: todos os _Controllers_ devem estender `\Magento\Framework\App\Action\Action` e ter um método `execute()`.
+
+
 
 ### 2.3 Demonstrate how to use URL rewrites for a catalog product view to a different URL 
 
