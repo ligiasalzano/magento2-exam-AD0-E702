@@ -71,10 +71,18 @@ O URL pode ser criado de várias formas.
 - Dentro de um módulo, criando o frontname no arquivo `My_Company/My_Module/etc/[area]/routes.xml` e o _controller_ em `My_Company/My_Module/Controller/MyController/ActionFile.php`. Observação: todos os _Controllers_ devem estender `\Magento\Framework\App\Action\Action` e ter um método `execute()`.
 
 
+### 2.3  Demonstrar como usar reescritas de URL de uma página de produto do catálogo para um URL diferente
 
-### 2.3 Demonstrate how to use URL rewrites for a catalog product view to a different URL 
+#### Como o URL amigável de um produto ou categoria é definido? 
 
-**How is the user-friendly URL of a product or category defined?**
-**How can you change it?**
-**How do you determine which page corresponds to a given user-friendly URL?**
- 
+Através do atributo `url_key`. Se ele não for definido, ele automáticamente corresponderá ao slug do produto ou categoria.
+
+#### Como você pode mudá-lo? 
+
+Editando a `url_key` na página de edição do produto ou categoria.
+
+#### Como você determina qual página corresponde a um determinado URL amigável?
+
+Através da reescrita de URL ou da criação de uma nova rota em um módulo personalizado.
+
+Na tabela _url_rewrite_, você encontrará uma linha em que o valor _request_path_ é o URL amigável. O valor _target_path_ correspondente é a página interna do Magento. O módulo _Magento_UrlRewrite_ contém um _router_ que verifica se o URL fornecido pode ser correspondido a um _request_path_ na tabela _url_rewrite_, redirecionando para o _target_path_ se uma correspondência for encontrada.
