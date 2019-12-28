@@ -1,0 +1,61 @@
+## 2. Processamento do Fluxo de Requisição
+
+### 2.1 Descrever como usar os modos Magento
+
+#### Entender os prós e contras de usar o modo de desenvolvedor ou o modo de produção. 
+
+O Magento possui três modos: o _defaul_, o _developer_ e o _production_.
+
+- **_Default mode_**: 
+  - É um híbrido dos modos _developer_ e _production_. Por isso não é o modo ideal nem para desenvolver e nem para a loja em produção.
+  - Ele é o modo padrão, já vem definido na instalação do Magento
+  - Utiliza links simbólicos
+  - Erros não são mostrados (eles são colocados nos arquivos de log)
+  - Arquivos estáticos são gerados em tempo real e _symlinked_ na pasta `var/view_prepeocessed`.
+- **_Developer mode_**:
+  - Ideal para desenvolvimento.
+  - Baixa performace (bem mais lento).
+  - utiliza links simbólicos. Eles podem ser atualizados com o comando `bin/magento dev:static-content:deploy -f` ou removidos manualmente.
+  - Os erros são mostrados ao usuário e o log é detalhado. Observação: o log de depuração está desativado por padrão, mesmo no modo de desenvolvedor.
+  - Não deve ser usado em produção pois apresenta riscos de segurança.
+- **_Production mode_**
+  - Ideal para produção.
+  - Melhor performace (mais rápido).
+  - Não usa links simbólicos.
+  - Erros são salvos nos arquivos de log.
+  - Arquivos estáticos são pré-compilados, a compilação não acontece em tempo real.
+- **_Maintenance mode_**
+  - Redireciona os usuários para uma página de "Serviço Temporariamente Indisponível"
+  - Quando este modo está ativo, o arquivo `.maintenance.flag` é criado na pasta `var/`.
+  - É possível configurar uma lista de IPs como exceção ao modo de manutenção
+
+#### Como você ativa/desativa o modo de manutenção?
+
+Quando o modo de manutenção está ativo, o arquivo `.maintenance.flag` é criado dentro da pasta `var/`. Quando este arquivo não existe, a loja funciona normalmente.
+Há também o arquivo `.maintenance.ip`, no mesmo diretório (`var/`). Nele existe uma lista de IPs que são exceção ao modo de manutenção.
+
+Comandos:
+- Habilitar o modo manutenção: `bin/magento maintenance:enable [--ip=<ip address> ... --ip=<ip address>] | [ip=none]` 
+- Desabilitar: `magento maintenance:disable [--ip=<ip address> ... --ip=<ip address>] | [ip=none]`
+- Verificar o status: `magento maintenance:status`
+
+Onde:
+- `--ip=<ip address>` representa um IP que será exceção ao modo de manutenção
+
+Para salvar uma lista de IPs, você pode usar: `magento maintenance:allow-ips <ip address> .. <ip address> [--none]`. `--none` limpa a lista.
+
+> Depois de colocar o Magento no modo de manutenção, você deve parar todos os processos do consumidor da fila de mensagens.
+> Uma maneira de encontrar esses processos é executar o comando `ps -ef | grep queue:consumer:start`. E então executar o comando `kill <process_id>` para cada consumidor. Em um ambiente com vários nós, certifique-se de repetir esta tarefa em cada nó.
+
+
+### 2.2 Demonstrate the ability to create a frontend controller with different response types (HTML / JSON / redirect) 
+
+**How do you identify which module/controller corresponds to a given URL?**
+**What would you do to create a given URL?**
+
+### 2.3 Demonstrate how to use URL rewrites for a catalog product view to a different URL 
+
+**How is the user-friendly URL of a product or category defined?**
+**How can you change it?**
+**How do you determine which page corresponds to a given user-friendly URL?**
+ 
