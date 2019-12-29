@@ -16,17 +16,60 @@ Os únicos arquivos obrigatórios para criar um tema são o `registration.php` e
 
 O tema pai é definido no nó `<parent>` dentro do arquivo `theme.xml`.
 
-### 3.2 Demonstrate an ability to create UI customizations using a combination of a block and template 
+### 3.2 Demonstrar habilidade para criar personalizações na interface do usuário usando uma combinação de um bloco e template
 
-**How do you assign a template to a block?**
-**How do you assign a different template to a native block?**
+#### Como você atribui um template a um bloco? 
 
-### 3.3 Identify the uses of different types of blocks 
-**When would you use non-template block types?**
+Um template é atribuído à um bloco através de um arquivo de layout XML.
+```xml
+<block class="Namespace\Of\Your\Class"
+       name="blockName"
+       template="Module_Name::path/to/your/template.phtml"
+/>
+```
+> Observação: o caminho para o template phtml é descrito a partir do diretório `templates/`.
 
-### 3.4 Describe the elements of the Magento layout XML schema, including the major XML directives 
+
+#### Como você atribui um template diferente a um bloco nativo?
+
+A substituição de um arquivo de template de um bloco já existente também é feita em um arquivo de layout XML:
+
+```xml
+<referenceBlock name="blockName">
+    <action method="setTemplate">
+        <argument name="template" xsi:type="string">
+            Module_Name::path/to/your/template.phtml
+        <argument>
+    </action>
+</referenceBlock>
+```
+
+### 3.3  Identifique os usos dos diferentes tipos de blocos
+
+#### Quando você usaria os tipos de bloco "sem template"?
+
+Quando usamos renderizadores simples. Quando o conteúdo do bloco é gerado dinamicamente ou armazenado em um banco de dados ou em contêineres.
+
+- **Text**: imprime uma _string_. Caminho: `vendor/magento/framework/View/Element/Text.php`.
+- **ListText**: seria como um contêiner que retorna cada um dos blocos filhos. Caminho: `vendor/magento/framework/View/Element/Text/ListText.php`.
+- **Templates**: Renderiza um HTML para o usuário. Caminho: `vendor/magento/framework/View/Element/Template.php`.
+
+> Com os contêineres de layout do Magento, os casos de uso de blocos "sem template" são muito poucos. 
+
+### 3.4  Descrever os elementos do esquema de layout XML da Magento, incluindo as principais diretivas XML
+
+#### Como você usa as diretivas do layout XML em suas customizações? 
+
+#### Como você registra um novo arquivo de layout?
+
+- Dentro do diretório do seu módulo (`app/code/MyCompany/MyModule/`), crie o diretório `view/frontend/layout`.
+- Crie o arquivo xml para o _handle_ que você quer modificar. Ex.: `cms_index_index.xml`
+
+
 **How do you use layout XML directives in your customizations?**
 **How do you register a new layout file?**
 
-### 3.5 Create and add code and markup to a given page 
+### 3.5 Create and add code and markup to a given page
+
+
 **How do you add new content to existing pages using layout XML?**
