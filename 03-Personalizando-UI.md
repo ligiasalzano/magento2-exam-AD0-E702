@@ -35,12 +35,10 @@ Um template é atribuído à um bloco através de um arquivo de layout XML.
 A substituição de um arquivo de template de um bloco já existente também é feita em um arquivo de layout XML:
 
 ```xml
-<referenceBlock name="blockName">
-    <action method="setTemplate">
-        <argument name="template" xsi:type="string">
-            Module_Name::path/to/your/template.phtml
-        <argument>
-    </action>
+<referenceBlock name="block_to_change">
+    <arguments>
+        <argument name="template" xsi:type="string">[Vendor]_[Module]::/path/to/template.phtml</argument>
+    </arguments>
 </referenceBlock>
 ```
 
@@ -110,17 +108,16 @@ As diretivas do layout XML da Magento contém instruções para:
 
 > Observação: lembrando que o caminho para o arquivo template.phtml é `<module_dir>/view/<area>/templates` ou `<theme_dir>/<Vendor_Module>/templates`
 
-##### Instruções gerais de layout
-- <block>: Criação de blocos.
-- <container>
-before and after attributes
-<action>
-<referenceBlock> and <referenceContainer>
-<move>
-<remove>
-<update>
-<argument>
-<block> vs <container>
+##### [Instruções gerais de layout](https://devdocs.magento.com/guides/v2.3/frontend-dev-guide/layouts/xml-instructions.html#fedg_layout_xml-instruc_ex)
+- <block>: Criação de blocos. Requerido o _namespace_ completo e a _class_ para o bloco (não coloque um "\" no início do _type_).
+- <container>: Um agrupamento de blocos (e outros contêiners). Nele pode-se especificar a tag html que englobará os blocos. Se não houver blocos dentro dele, ele não será mostrado.
+- Atributos _before_ e _after_: Ajuda a definir o posicionamento dos elementos em relação à outros
+- <arguments> e <argument>: `<argument>` é usado para passar um argumento. Ele fica encapsulado em `<arguments>`. O argumento define um valor para o _array_ de dados do bloco.
+- <referenceBlock> e <referenceContainer>: Referencia um bloco ou contêiner existente para modificá-los.
+- <move>: Define que um elemento declarado como filho de outro elemento na ordem especificada.
+- <remove>: Usado para remover recursos estáticos do _head_ (para remover um bloco ou contêiner, é usado o atributo _remove_ no <referenceBlock> ou <referenceContainer>).
+- <update>: adiciona um arquivo de layout.
+
 #### Como você registra um novo arquivo de layout?
 
 Você pode criar um novo arquivo de layout em `<module_dir>/view/<area>/layout/<layout-handle>.xml` ou em `<theme_dir>/<Vendor>_<Module>/layout/<layout-handle>.xml`. Nesse arquivo, nomeado com o _handle_ que você definiu, deve conter a declaração do XML e o nó `<page>` como raiz do arquivo:
@@ -133,7 +130,9 @@ Você pode criar um novo arquivo de layout em `<module_dir>/view/<area>/layout/<
 ```
 
 
-### 3.5 Create and add code and markup to a given page
+### 3.5 Criar e adicionar código e marcação em uma determinada página
 
+#### Como você adiciona um novo conteúdo em uma página existente usando o layout XML?
 
-**How do you add new content to existing pages using layout XML?**
+Deve-se criar um novo arquivo de layout XML no tema ou módulo. O nome do arquivo será o nome do handle da página à ser atualizada.
+Então pode-se usar as instruções descritas acima para realizar as modificações desejadas.
