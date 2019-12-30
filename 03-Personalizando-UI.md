@@ -60,9 +60,67 @@ Quando usamos renderizadores simples. Quando o conteúdo do bloco é gerado dina
 
 #### Como você usa as diretivas do layout XML em suas customizações? 
 
+As diretivas do layout XML da Magento contém instruções para:
+- Adicionar e excluir recursos estáticos (JavaScript, CSS, fontes) na _head_ da página;
+  - Isso pode ser feito no arquivo `<theme_dir>/Magento_Theme/layout/default_head_blocks.xml`
+- Criar e modificar contêineres;
+  - Para criar, usa-se o nó _container_: `<container name="you.container" as="youContainer" label="My Container" htmlTag="div" htmlClass="my-container" />`
+   - Para modificar, usamos o nó _referenceContainer_: 
+     ```xml
+       <referenceContainer name="header.panel">
+           <block class="YouVendor\YouModule\Block\YouBlock" name="new.block" />
+       </referenceContainer>
+       ```
+- Criar e modificar blocos;
+  - Para criar, com o nó _block_: `<block class="Magento\Catalog\Block\Product\View\Description" name="product.info.sku" template="product/view/attribute.phtml" after="product.info.type" />`
+  - E para modificar, aplicamos o _referenceBlock_:
+       ```xml
+       <!-- Bloco original -->
+       <block class="Namespace_Module_Block_Type" name="block.example">
+           <arguments>
+               <argument name="label" xsi:type="string">Block Label</argument>
+           </arguments>
+       </block>
 
+      <!-- Modificando o bloco -->
+       <referenceBlock name="block.example">
+           <arguments>
+               <!-- modificando um argumento preexistente -->
+               <argument name="label" xsi:type="string">New Block Label</argument>
+               <!-- Novo argumento -->
+               <argument name="custom_label" xsi:type="string">Custom Block Label</argument>
+           </arguments>
+       </referenceBlock>
+       ```
+- Definir _templates_ para blocos;
+  - Método 1 - usando o atributo _template_ (mais forte): `<referenceBlock name="new.template" template="Your_Module::new_template.phtml"/>`
+  - Método 2 - usando um argumento com _name_ _template_:
+  ```xml
+       <referenceBlock name="new.template">
+            <arguments>
+                <argument name="template" xsi:type="string">Your_Module::new_template.phtml</argument>
+            </arguments>
+        </referenceBlock>
+       ```
+- Passar argumentos em blocos; 
+- Alterar a localização e a ordem dos elementos (blocos e contêineres);
+  - Mover: `<move element="product.info.review" destination="product.info.main" before="product.info.price"/>`
+- Excluir elementos (blocos e contêineres).
+  - Remover: `<referenceBlock name="catalog.compare.sidebar" remove="true" />`
 
+> Observação: lembrando que o caminho para o arquivo template.phtml é `<module_dir>/view/<area>/templates` ou `<theme_dir>/<Vendor_Module>/templates`
 
+##### Instruções gerais de layout
+- <block>: Criação de blocos.
+- <container>
+before and after attributes
+<action>
+<referenceBlock> and <referenceContainer>
+<move>
+<remove>
+<update>
+<argument>
+<block> vs <container>
 #### Como você registra um novo arquivo de layout?
 
 Você pode criar um novo arquivo de layout em `<module_dir>/view/<area>/layout/<layout-handle>.xml` ou em `<theme_dir>/<Vendor>_<Module>/layout/<layout-handle>.xml`. Nesse arquivo, nomeado com o _handle_ que você definiu, deve conter a declaração do XML e o nó `<page>` como raiz do arquivo:
