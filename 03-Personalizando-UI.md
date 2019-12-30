@@ -60,14 +60,20 @@ Quando usamos renderizadores simples. Quando o conteúdo do bloco é gerado dina
 
 #### Como você usa as diretivas do layout XML em suas customizações? 
 
+
+
+
 #### Como você registra um novo arquivo de layout?
 
-- Dentro do diretório do seu módulo (`app/code/MyCompany/MyModule/`), crie o diretório `view/frontend/layout`.
-- Crie o arquivo xml para o _handle_ que você quer modificar. Ex.: `cms_index_index.xml`
+Você pode criar um novo arquivo de layout em `<module_dir>/view/<area>/layout/<layout-handle>.xml` ou em `<theme_dir>/<Vendor>_<Module>/layout/<layout-handle>.xml`. Nesse arquivo, nomeado com o _handle_ que você definiu, deve conter a declaração do XML e o nó `<page>` como raiz do arquivo:
 
+```xml
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    ...
+</page>
+```
 
-**How do you use layout XML directives in your customizations?**
-**How do you register a new layout file?**
 
 ### 3.5 Create and add code and markup to a given page
 
