@@ -60,3 +60,4 @@ Anotações realizadas durante os meus estudos para a certificação **Associate
 - [MagedIn University](https://university.magedin.com/curso/iniciando-o-desenvolvimento-em-magento-2)
 - [Amasty Blog](https://amasty.com/blog/magento-2-certification-dependency-injection-approach-and-architecture/)
 - [Alan Storm Blog](https://alanstorm.com/magento_2_object_manager_instance_objects/)
+- [BELVG Tutorial](https://belvg.com/tutorial/magento-2-certified-professional-developer-guide)
