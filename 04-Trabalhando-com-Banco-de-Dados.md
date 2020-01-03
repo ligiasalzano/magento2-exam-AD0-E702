@@ -48,9 +48,35 @@ Describe how to filter, sort, and specify the selected values for collections an
 
 ### 4.4  Demonstrar habilidade para usar o esquema declarativo (_declarative schema_)
 
-Como você adiciona uma coluna usando o declarative schema? Como você modifica uma tabela adicionada por outro
-módulo? Como você exclui uma coluna? Como você adiciona um índice ou chave estrangeira usando o esquema
-declarativo? Como você manipula dados usando patches de dados? Qual é o propósito dos patches de esquema?
+Ler: https://devdocs.magento.com/guides/v2.3/extension-dev-guide/declarative-schema/
+
+
+#### Como você adiciona uma coluna usando o declarative schema? 
+
+O nó `column` adiciona uma coluna. Conforme no exemplo abaixo, que está adicionando a coluna _date_closed_:
+```xml
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="declarative_table">
+        <column xsi:type="int" name="id_column" padding="10" unsigned="true" nullable="false" comment="Entity Id"/>
+        <column xsi:type="int" name="severity" padding="10" unsigned="true" nullable="false" comment="Severity code"/>
+        <column xsi:type="varchar" name="title" nullable="false" length="255" comment="Title"/>
+        <column xsi:type="timestamp" name="time_occurred" padding="10" comment="Time of event"/>
++       <column xsi:type="timestamp" name="date_closed" padding="10" comment="Time of event"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id_column"/>
+        </constraint>
+    </table>
+</schema>
+
+```
+
+
+#### Como você modifica uma tabela adicionada por outro módulo? 
+#### Como você exclui uma coluna? 
+#### Como você adiciona um índice ou chave estrangeira usando o esquema declarativo?
+#### Como você manipula dados usando patches de dados? 
+#### Qual é o propósito dos patches de esquema?
 
 **How do you add a column using declarative schema?**
 **How do you modify a table added by another module?**
