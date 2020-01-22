@@ -109,14 +109,14 @@ As diretivas do layout XML da Magento contém instruções para:
 > Observação: lembrando que o caminho para o arquivo template.phtml é `<module_dir>/view/<area>/templates` ou `<theme_dir>/<Vendor_Module>/templates`
 
 ##### [Instruções gerais de layout](https://devdocs.magento.com/guides/v2.3/frontend-dev-guide/layouts/xml-instructions.html#fedg_layout_xml-instruc_ex)
-- <block>: Criação de blocos. Requerido o _namespace_ completo e a _class_ para o bloco (não coloque um "\" no início do _type_).
-- <container>: Um agrupamento de blocos (e outros contêiners). Nele pode-se especificar a tag html que englobará os blocos. Se não houver blocos dentro dele, ele não será mostrado.
+- `<block>`: Criação de blocos. Requerido o _namespace_ completo e a _class_ para o bloco (não coloque um "\" no início do _type_).
+- `<container>`: Um agrupamento de blocos (e outros contêiners). Nele pode-se especificar a tag html que englobará os blocos. Se não houver blocos dentro dele, ele não será mostrado.
 - Atributos _before_ e _after_: Ajuda a definir o posicionamento dos elementos em relação à outros
-- <arguments> e <argument>: `<argument>` é usado para passar um argumento. Ele fica encapsulado em `<arguments>`. O argumento define um valor para o _array_ de dados do bloco.
-- <referenceBlock> e <referenceContainer>: Referencia um bloco ou contêiner existente para modificá-los.
-- <move>: Define que um elemento declarado como filho de outro elemento na ordem especificada.
-- <remove>: Usado para remover recursos estáticos do _head_ (para remover um bloco ou contêiner, é usado o atributo _remove_ no <referenceBlock> ou <referenceContainer>).
-- <update>: adiciona um arquivo de layout.
+- `<arguments>` e `<argument>`: `<argument>` é usado para passar um argumento. Ele fica encapsulado em `<arguments>`. O argumento define um valor para o _array_ de dados do bloco.
+- `<referenceBlock>` e `<referenceContainer>`: Referencia um bloco ou contêiner existente para modificá-los.
+- `<move>`: Define que um elemento declarado como filho de outro elemento na ordem especificada.
+- `<remove>`: Usado para remover recursos estáticos do _head_ (para remover um bloco ou contêiner, é usado o atributo _remove_ no `<referenceBlock>` ou `<referenceContainer>`).
+- `<update>`: adiciona um arquivo de layout.
 
 #### Como você registra um novo arquivo de layout?
 
