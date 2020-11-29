@@ -1,5 +1,11 @@
-# MAGENTO 2 ASSOCIATE DEVELOPER CERTIFICATION
-Anotações realizadas durante os meus estudos para a certificação **Associated Developer** da Magento. Caso possua uma sugestão ou correção, é só me escrever. :)
+# Adobe Certified Professional Magento Commerce Developer Certification
+Anotações de estudo para a certificação "Adobe Certified Professional Magento Commerce Developer (AD0-E702)".
+Antigamente, esta era a certificação: [Magento Associate Developer](https://spark.adobe.com/page/MRusIqkhBMG0d/).
+Caso possua uma sugestão ou correção, é só me escrever. :)
+
+## Informações
+O exame é composto por 60 questões de múltipla escolha e tem duração de 120 minutos.
+Para passar, é necessário acertar 68% das respostas.
 
 # TÓPICOS
 
