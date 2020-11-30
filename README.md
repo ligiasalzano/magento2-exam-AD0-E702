@@ -8,7 +8,7 @@ O exame é composto por 60 questões de múltipla escolha e tem duração de 120
 Para passar, é necessário acertar 68% das respostas.
 
 # TÓPICOS
-
+<br/>
 1. [**ARQUITETURA MAGENTO E TÉCNICAS DE CUSTOMIZAÇÃO**](01-Arquitetura-e-Customizacao.md) - 33% do conteúdo
    1. Descrever a arquitetura baseada em módulos da Magento 
    2. Descrever a estrutura de diretórios da Magento 
@@ -18,32 +18,32 @@ Para passar, é necessário acertar 68% das respostas.
    6. Configurar event observers e trabalhos agendados (scheduled jobs)
    7. Utilizar o CLI 
    8. Descrever como as extensões são instaladas e configuradas 
-
+<br/>
 2. [**PROCESSAMENTO DO FLUXO DE REQUISIÇÃO**](02-Fluxo-de-Requisicao.md) - 7% do conteúdo
     1. Descrever como usar os modos de deploy do Magento 
     2. Demonstrar a capacidade de criar um controller frontend com diferentes tipos de resposta (HTML / JSON / redirect) 
     3. Demonstrar como usar reescritas de URL de uma página de produto do catálogo para um URL diferente 
-
+<br/>
 3. [**PERSONALIZANDO A INTERFACE DE USUÁRIO (UI) DA MAGENTO**](03-Personalizando-a-UI.md) - 15% do conteúdo
     1. Demonstrar a capacidade de personalizar a UI da Magento usando temas
     2. Demonstrar habilidade para criar personalizações na interface do usuário usando uma combinação de um bloco e template
     3. Identifique os usos dos diferentes tipos de blocos 
     4. Descrever os elementos do esquema de layout XML da Magento, incluindo as principais diretivas XML
     5. Criar e adicionar código e marcação em uma determinada página
-
+<br/>
 4. [**TRABALHANDO COM BANCO DE DADOS NA MAGENTO**](04-Trabalhando-com-banco-de-dados.md) - 18% do conteúdo
     1. Descrever os conceitos básicos de models, resource models e collections 
     2. Descrever como ocorre a leitura e gravação de uma entidade
     3. Descrever como filtrar, ordenar e especificar os valores selecionados para collections e repositories
     4. Demonstrar habilidade para usar o esquema declarativo (declarative schema)
- 
+ <br/>
 5. [**DESENVOLVENDO COM O ADMINHTML**](05-Desenvolvendo-com-o-Adminhtml.md) - 11% do conteúdo
     1. Criar um controller para uma rota de admin 
     2. Definir os termos e elementos básicos da configuração do sistema, incluindo escopos, website/store/store view
     3. Definir/identificar os termos e elementos básicos do ACL
     4. Configurar um item de menu
     5. Criar permissões apropriadas para usuários
-
+<br/>
 6. [**PERSONALIZAÇÃO DA LÓGICA DE NEGÓCIOS DA MAGENTO**](06-Personalizacao-da-Logica-de-Negocios.md) - 16% do conteúdo
     1. Identificar/descrever os tipos de produto padrão (simples, configurável, agrupado, etc.)
     2. Descrever as propriedades da categoria na Magento
@@ -54,7 +54,7 @@ Para passar, é necessário acertar 68% das respostas.
     7. Adicionar ou modificar atributos do cliente
     8. Personalizar o endereço do cliente
 
-
+<br/><br/>
 # Principais Referências
 - [Adobe Magento Exam Guide](https://spark.adobe.com/page/ClHLYMaUjTUfa/)
 - [WebJump - Tradução do guia de estudo da Magento](https://webjump.com.br/treinamento-oficial-magento/guias-de-estudo/)
