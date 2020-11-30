@@ -5,7 +5,7 @@ menu:
   - title: 01 - Arquitetura magento e técnicas de customização
     url:   01-Arquitetura-e-Customizacao.html
   - title: 02 - Processamento do fluxo de requisição
-    url:   02-Fluxo-de-Requisicao.html
+    url:   02-Processamento-do-fluxo-de-requisicao.html
   - title: 03 - Personalizando a Interface de Usuário (UI) do Magento
     url:   03-Personalizando-a-UI.html
   - title: 04 - Trabalhando com banco de dados no Magento
@@ -13,4 +13,4 @@ menu:
   - title: 05 - Desenvolvendo com o adminhtml
     url:   05-Desenvolvendo-com-o-Adminhtml.html
   - title: 06 - Personalização da lógica de negócios do Magento
-    url:   06-Personalizacao-da-Logica-de-Negocios.html
+    url:   06-Personalizacao-da-logica-de-negocios.html
