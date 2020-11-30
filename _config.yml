@@ -1,14 +1,14 @@
 remote_theme: hydecorp/hydejack@v9.0.5
 menu:
-  - title: Arquitetura magento e técnicas de customização
+  - title: 01 - Arquitetura magento e técnicas de customização
     url:   01-Arquitetura-e-Customizacao.md
-  - title: Processamento do fluxo de requisição
+  - title: 02 - Processamento do fluxo de requisição
     url:   02-Fluxo-de-Requisicao.md
-  - title: Personalizando a Interface de Usuário (UI) do Magento
+  - title: 03 - Personalizando a Interface de Usuário (UI) do Magento
     url:   03-Personalizando-a-UI.md
-  - title: Trabalhando com banco de dados no Magento
+  - title: 04 - Trabalhando com banco de dados no Magento
     url:   04-Trabalhando-com-banco-de-dados.md
-  - title: Desenvolvendo com o adminhtml
+  - title: 05 - Desenvolvendo com o adminhtml
     url:   05-Desenvolvendo-com-o-Adminhtml.md
-  - title: Personalização da lógica de negócios do Magento
+  - title: 06 - Personalização da lógica de negócios do Magento
     url:   06-Personalizacao-da-Logica-de-Negocios.md
