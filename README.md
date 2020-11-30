@@ -9,7 +9,7 @@ Para passar, é necessário acertar 68% das respostas.
 
 # TÓPICOS
 
-1. [**ARQUITETURA MAGENTO E TÉCNICAS DE CUSTOMIZAÇÃO**](01-Arquitetura-e-Customizacao.md) - 33% do conteúdo
+1. [**ARQUITETURA MAGENTO E TÉCNICAS DE CUSTOMIZAÇÃO**](01-Arquitetura-e-customizacao.md) - 33% do conteúdo
    1. Descrever a arquitetura baseada em módulos da Magento 
    2. Descrever a estrutura de diretórios da Magento 
    3. Utilizar o escopo de configuração e variáveis de configuração 
@@ -19,7 +19,7 @@ Para passar, é necessário acertar 68% das respostas.
    7. Utilizar o CLI 
    8. Descrever como as extensões são instaladas e configuradas 
 
-2. [**PROCESSAMENTO DO FLUXO DE REQUISIÇÃO**](02-Fluxo-de-Requisicao.md) - 7% do conteúdo
+2. [**PROCESSAMENTO DO FLUXO DE REQUISIÇÃO**](02-Processamento-do-fluxo-de-requisicao.md) - 7% do conteúdo
     1. Descrever como usar os modos de deploy do Magento 
     2. Demonstrar a capacidade de criar um controller frontend com diferentes tipos de resposta (HTML / JSON / redirect) 
     3. Demonstrar como usar reescritas de URL de uma página de produto do catálogo para um URL diferente 
@@ -44,7 +44,7 @@ Para passar, é necessário acertar 68% das respostas.
     4. Configurar um item de menu
     5. Criar permissões apropriadas para usuários
 
-6. [**PERSONALIZAÇÃO DA LÓGICA DE NEGÓCIOS DA MAGENTO**](06-Personalizacao-da-Logica-de-Negocios.md) - 16% do conteúdo
+6. [**PERSONALIZAÇÃO DA LÓGICA DE NEGÓCIOS DA MAGENTO**](06-Personalizacao-da-logica-de-negocios.md) - 16% do conteúdo
     1. Identificar/descrever os tipos de produto padrão (simples, configurável, agrupado, etc.)
     2. Descrever as propriedades da categoria na Magento
     3. Definir como os produtos são relacionados a uma categoria
