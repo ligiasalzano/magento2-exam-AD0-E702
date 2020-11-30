@@ -1,7 +1,7 @@
 remote_theme: hydecorp/hydejack@v9.0.5
 menu:
   - title: Início
-    url: https://ligiasalzano.github.io/magento2-exam-AD0-E702/
+    url: /magento2-exam-AD0-E702/
   - title: 01 - Arquitetura magento e técnicas de customização
     url:   01-Arquitetura-e-Customizacao.html
   - title: 02 - Processamento do fluxo de requisição
