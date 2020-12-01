@@ -4,10 +4,10 @@ description: Anotações de estudo para a certificação Adobe Certified Profess
 permalink: /
 ---
 
-
 ### Informações
 O exame é composto por 60 questões de múltipla escolha e tem duração de 120 minutos.
-Para passar, é necessário acertar 68% das respostas.
+Para passar, é necessário acertar 68% das respostas.<br>
+Antigamente, esta era a certificação: [Magento Associate Developer](https://spark.adobe.com/page/MRusIqkhBMG0d/).
 
 ## TÓPICOS
 
