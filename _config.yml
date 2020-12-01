@@ -13,3 +13,11 @@ menu:
     url:   05-Desenvolvendo-com-o-Adminhtml.html
   - title: 06 - Personalização da lógica de negócios do Magento
     url:   06-Personalizacao-da-logica-de-negocios.html
+
+# file: `01-Arquitetura-e-customizacao.md`
+---
+title:  Arquitetura Magento e Técnicas de Customização
+slug:   arquitetura-e-customizacao
+description: >
+  Arquitetura e técnicas de customização do Magento 2.
+---
