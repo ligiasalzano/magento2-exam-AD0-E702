@@ -1,6 +1,12 @@
-## 2. Processamento do Fluxo de Requisição
+---
+title: Processamento do Fluxo de Requisição
+description: Processamento do Fluxo de Requisição no Magento 2
+permalink: /processamento-do-fluxo-de-requisicao
+---
 
-### 2.1 Descrever como usar os modos Magento
+{:toc}
+
+### Descrever como usar os modos Magento
 
 #### Entender os prós e contras de usar o modo de desenvolvedor ou o modo de produção. 
 
@@ -48,7 +54,7 @@ Para salvar uma lista de IPs, você pode usar: `magento maintenance:allow-ips <i
 > Uma maneira de encontrar esses processos é executar o comando `ps -ef | grep queue:consumer:start`. E então executar o comando `kill <process_id>` para cada consumidor. Em um ambiente com vários nós, certifique-se de repetir esta tarefa em cada nó.
 
 
-### 2.2  Demonstrar a capacidade de criar um controller frontend com diferentes tipos de resposta (HTML/JSON/redirect)
+### Demonstrar a capacidade de criar um controller frontend com diferentes tipos de resposta (HTML/JSON/redirect)
 
 #### Como você identifica qual módulo/controller corresponde para um determinado URL? 
 
@@ -71,7 +77,7 @@ O URL pode ser criado de várias formas.
 - Dentro de um módulo, criando o frontname no arquivo `My_Company/My_Module/etc/[area]/routes.xml` e o _controller_ em `My_Company/My_Module/Controller/MyController/ActionFile.php`. Observação: todos os _Controllers_ devem estender `\Magento\Framework\App\Action\Action` e ter um método `execute()`.
 
 
-### 2.3  Demonstrar como usar reescritas de URL de uma página de produto do catálogo para um URL diferente
+### Demonstrar como usar reescritas de URL de uma página de produto do catálogo para um URL diferente
 
 #### Como o URL amigável de um produto ou categoria é definido? 
 
