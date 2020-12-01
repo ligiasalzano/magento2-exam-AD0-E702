@@ -1,3 +1,5 @@
+## Arquitetura Magento e Técnicas de Customização 
+
 1. Arquitetura Magento e Técnicas de Customização 
    1. Descrever a arquitetura baseada em módulos da Magento
    2. Descrever a estrutura de diretórios da Magento
