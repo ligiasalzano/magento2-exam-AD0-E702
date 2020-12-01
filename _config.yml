@@ -1,5 +1,43 @@
+################################################################################################################
+# Site settings                                                                                             #
+################################################################################################################
 remote_theme: hydecorp/hydejack@v9.0.5
-short_title: Magento 2 Professional Developer Study Guide
+
+################################################################################################################
+# General settings                                                                                             #
+################################################################################################################
+
+lang: pt-BR
+title: Magento 2 Professional Developer Study Guide
+short_title: Magento 2 Professional Developer
+description: Minhas anotações de estudo para a certificação “Adobe Certified Professional Magento Commerce Developer (AD0-E702)”.
+tagline: Minhas anotações de estudo para a certificação “Adobe Certified Professional Magento Commerce Developer (AD0-E702)”.
+keywords: [
+  'Magento',
+  'Magento 2',
+  'certificação',
+  'Adobe',
+  'e-commerce',
+  'developer'
+  ]
+  
+author:
+  # Used by `jekyll-feed`:
+  name: Ligia Salzano
+  email: ligiasalzano@gmail.com
+  # # Used by `jekyll-seo-tag`:
+  twitter: ligiasalzano
+  github: ligiasalzano
+  telegram: ligiasalzano
+  instagram: ligiasalzano
+  linkedin: ligiasalzano
+
+share-links-active:
+  twitter: true
+  facebook: true
+  linkedin: true
+  
+# Add links to the sidebar
 menu:
   - title: 01 - Arquitetura magento e técnicas de customização
     url:   01-Arquitetura-e-customizacao.html
@@ -14,10 +52,6 @@ menu:
   - title: 06 - Personalização da lógica de negócios do Magento
     url:   06-Personalizacao-da-logica-de-negocios.html
 
-# file: `01-Arquitetura-e-customizacao.md`
----
-title:  Arquitetura Magento e Técnicas de Customização
-slug:   arquitetura-e-customizacao
-description: >
-  Arquitetura e técnicas de customização do Magento 2.
----
+
+no_search: false
+
