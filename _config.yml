@@ -1,8 +1,6 @@
 remote_theme: hydecorp/hydejack@v9.0.5
 short_title: Magento 2 Professional Developer Study Guide
 menu:
-  - title: Início
-    url: /magento2-exam-AD0-E702/
   - title: 01 - Arquitetura magento e técnicas de customização
     url:   01-Arquitetura-e-customizacao.html
   - title: 02 - Processamento do fluxo de requisição
