@@ -16,13 +16,13 @@ Um módulo é um **grupo lógico** – ou seja, um deiratório contendo _blocks,
 
 Dessa forma, um módulo deverá ser o mais independente e específico possível. Sendo que a inclusão ou exclusão de um módulo não deve afetar a funcionalidade de outros. [Magento DevDocs - Module overview](https://devdocs.magento.com/guides/v2.3/architecture/archi_perspectives/components/modules/mod_intro.html)
 
-#### Tipos de componentes
+**Tipos de componentes**
 No Magento existem 3 tipos de componentes:
 - Módulos (adicionam ou estendem uma funcionalidade)
 - Temas (personalizam a aparência - que podem ser para o frontend ou para a área adminhtml)
 - Pacotes de tradução (adiciona traduções de idioma)
 
-#### As áreas do Magento
+**As áreas do Magento**
 
 Há 7 áreas no Magento:
 
