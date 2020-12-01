@@ -1,9 +1,11 @@
 ---
+layout: about
 title: Guia de estudos: Professional Magento Commerce Developer
-description: Anotações de estudo para a certificação "Adobe Certified Professional Magento Commerce Developer (AD0-E702)".
+description: Anotações de estudo para a certificação Adobe Certified Professional Magento Commerce Developer (AD0-E702)
 cover: true
 permalink: /
 ---
+
 
 
 # Olá!
