@@ -1,3 +1,9 @@
+---
+title: Arquitetura Magento e Técnicas de Customização
+description: Arquitetura e técnicas de customização do Magento 2
+permalink: /arquitetura-e-customizacao
+---
+
 1. Descrever a arquitetura baseada em módulos da Magento
 2. Descrever a estrutura de diretórios da Magento
 3. Utilizar o escopo de configuração e variáveis de configuração
