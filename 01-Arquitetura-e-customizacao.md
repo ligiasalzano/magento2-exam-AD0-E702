@@ -1,14 +1,13 @@
 ## Arquitetura Magento e Técnicas de Customização 
 
-1. Arquitetura Magento e Técnicas de Customização 
-   1. Descrever a arquitetura baseada em módulos da Magento
-   2. Descrever a estrutura de diretórios da Magento
-   3. Utilizar o escopo de configuração e variáveis de configuração
-   4. Demonstrar como usar a injeção de dependência (Dependency Injection - DI)
-   5. Demonstar habilidade no uso de plugins
-   6. Configurar event observers e trabalhos agendados (scheduled jobs)
-   7. Utilizar o CLI
-   8. Descrever como as extensões são instaladas e configuradas
+1. Descrever a arquitetura baseada em módulos da Magento
+2. Descrever a estrutura de diretórios da Magento
+3. Utilizar o escopo de configuração e variáveis de configuração
+4. Demonstrar como usar a injeção de dependência (Dependency Injection - DI)
+5. Demonstar habilidade no uso de plugins
+6. Configurar event observers e trabalhos agendados (scheduled jobs)
+7. Utilizar o CLI
+8. Descrever como as extensões são instaladas e configuradas
 {:toc}
 
 ## 1.1 Descrever a arquitetura baseada em módulos do Magento
