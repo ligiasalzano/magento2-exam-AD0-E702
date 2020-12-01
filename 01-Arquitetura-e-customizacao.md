@@ -6,6 +6,7 @@
 6. Configurar event observers e trabalhos agendados (scheduled jobs)
 7. Utilizar o CLI
 8. Descrever como as extensões são instaladas e configuradas
+
 {:toc}
 
 ## Descrever a arquitetura baseada em módulos do Magento
@@ -61,7 +62,7 @@ Isto adiciona o módulo à lista de componentes em `\Magento\Framework\Component
 
 Após a leitura deste arquivo, o Magento vai procurar o `etc/module.xml`.
 
-##### Registrando alguns tipos de componentes
+**Registrando alguns tipos de componentes**
 - **Módulos:** `ComponentRegistrar::register(ComponentRegistrar::MODULE, '<VendorName_ModuleName>', __DIR__);`
 - **Temas:** `ComponentRegistrar::register(ComponentRegistrar::THEME, '<area>/<vendor>/<theme name>', __DIR__);`
 - **Pacotes de tradução:** `ComponentRegistrar::register(ComponentRegistrar::LANGUAGE, '<VendorName>_<packageName>', __DIR__);`
