@@ -1,3 +1,4 @@
+# Adobe Certified Professional Magento Commerce Developer
 Anotações de estudo para a certificação "Adobe Certified Professional Magento Commerce Developer (AD0-E702)".\
 Antigamente, esta era a certificação: [Magento Associate Developer](https://spark.adobe.com/page/MRusIqkhBMG0d/).\
 Caso possua uma sugestão ou correção, é só me escrever. :)
@@ -6,7 +7,7 @@ Caso possua uma sugestão ou correção, é só me escrever. :)
 O exame é composto por 60 questões de múltipla escolha e tem duração de 120 minutos.
 Para passar, é necessário acertar 68% das respostas.
 
-# TÓPICOS
+## TÓPICOS
 
 1. [**ARQUITETURA MAGENTO E TÉCNICAS DE CUSTOMIZAÇÃO**](01-Arquitetura-e-customizacao.md) - 33% do conteúdo
    1. Descrever a arquitetura baseada em módulos da Magento 
