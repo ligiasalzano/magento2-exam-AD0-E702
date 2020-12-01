@@ -6,7 +6,6 @@
 6. Configurar event observers e trabalhos agendados (scheduled jobs)
 7. Utilizar o CLI
 8. Descrever como as extensões são instaladas e configuradas
-
 {:toc}
 
 ## Descrever a arquitetura baseada em módulos do Magento
