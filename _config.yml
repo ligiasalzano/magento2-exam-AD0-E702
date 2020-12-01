@@ -40,17 +40,17 @@ share-links-active:
 # Add links to the sidebar
 menu:
   - title: 01 - Arquitetura magento e técnicas de customização
-    url:   01-Arquitetura-e-customizacao.html
+    url:   /arquitetura-e-customizacao
   - title: 02 - Processamento do fluxo de requisição
-    url:   02-Processamento-do-fluxo-de-requisicao.html
+    url:   /processamento-do-fluxo-de-requisicao
   - title: 03 - Personalizando a Interface de Usuário (UI) do Magento
-    url:   03-Personalizando-a-UI.html
+    url:   /personalizando-a-ui
   - title: 04 - Trabalhando com banco de dados no Magento
-    url:   04-Trabalhando-com-banco-de-dados.html
+    url:   /trabalhando-com-banco-de-dados
   - title: 05 - Desenvolvendo com o adminhtml
-    url:   05-Desenvolvendo-com-o-Adminhtml.html
+    url:   /desenvolvendo-com-o-adminhtml
   - title: 06 - Personalização da lógica de negócios do Magento
-    url:   06-Personalizacao-da-logica-de-negocios.html
+    url:   /personalizacao-da-logica-de-negocios
 
 
 no_search: false
