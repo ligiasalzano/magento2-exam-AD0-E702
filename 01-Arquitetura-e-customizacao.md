@@ -10,7 +10,7 @@
 8. Descrever como as extensões são instaladas e configuradas
 {:toc}
 
-## 1.1 Descrever a arquitetura baseada em módulos do Magento
+## 1 Descrever a arquitetura baseada em módulos do Magento
 
 ### Descrever a arquitetura do módulo.
 
@@ -42,7 +42,7 @@ Nem todas as áreas estão disponíveis todo o tempo. Por exemplo, a `crontab` �
 
 Os arquivos necessários para inicializar um módulo são: `registration.php`, `etc/module.xml` e `composer.json`. Sendo que são obrigatórios o `registration.php` e o `etc/module.xml`.
 
-#### 1. Declare o componente e suas dependências no composer.json.
+#### Declare o componente e suas dependências no composer.json.
 
 Nesse arquivo, informamos o nome, descrição, autor e versão do módulo, suas dependências e outras informações.
 No `composer.json`, o **_autoload_** especifica as informações necessarias para serem carregadas, como o arquivo _registration.php_.
@@ -56,7 +56,7 @@ No `composer.json`, o **_autoload_** especifica as informações necessarias par
 }
 ```
 
-#### 2. Registre o componente com o arquivo registration.php (obrigatório).
+#### Registre o componente com o arquivo registration.php (obrigatório).
 
 Este arquivo é incluído pelo _Composer autoloader_ (`app/etc/NonComposerComponentRegistration.php`).
 Isto adiciona o módulo à lista de componentes em `\Magento\Framework\Component\ComponetRegistrar`.
@@ -70,7 +70,7 @@ Após a leitura deste arquivo, o Magento vai procurar o `etc/module.xml`.
 - **Bibliotecas:** `ComponentRegistrar::register(ComponentRegistrar::LIBRARY, '<vendor>/<library_name>', __DIR__);`
 
 
-#### 3. Nomeie, declare e defina as dependências no arquivo module.xml (obrigatório).
+#### Nomeie, declare e defina as dependências no arquivo module.xml (obrigatório).
 
 Cada módulo deve ser nomeado e declarado em um arquivo xml específico do componente. 
 - module.xml (modules), theme.xml (themes) and language.xml (for language packages).
@@ -123,7 +123,7 @@ Os módulos estão localizados nos diretórios **vendor** e **app/code**.
 - O diretório **app/code** é recomendado para o desenvolvimento de módulos (ou instalações de módulos sem ser pelo Composer). Aqui, o diretório do módulo fica assim: `app/code/<vendor>/<module-name>`. 
 
 
-## 1.2 Descrever a estrutura de diretórios do Magento
+## Descrever a estrutura de diretórios do Magento
 
 ### Descrever a estrutura de diretórios do Magento
 
@@ -336,7 +336,7 @@ Alguns diretórios já estão definidos, por convenção, para serem responsáve
 
 O _namespace_ e o nome da classe auxiliam para identificar o arquivo. Por exemplo, o caminho do arquivo da classe PHP `TestCommand` do namespace `Magenteiro\PrimeiroModulo\Console\Command` é o `app/code/Magenteiro/PrimeiroModulo/Console/Command/TestCommand.php`.
 
-## 1.3 Utilizar configuração e escopo de variáveis de configuração
+## Utilizar configuração e escopo de variáveis de configuração
 
 ### Determinar como usar os arquivos de configuração na Magento. Quais arquivos de configuração são importantes no ciclo de desenvolvimento?
 
@@ -410,7 +410,7 @@ Configura os widgets para serem usados com páginas ou blocos CMS e produtos.
 
 ### Demonstrar capacidade de adicionar valores diferentes para diferentes escopos. Como você pode buscar o valor de uma configuração do sistema por meio de programação? Como você pode substituir os valores de uma configuração do sistema para uma determinada loja usando a configuração XML?
 
-## 1.4 Demonstrar como usar a injeção de dependência (DI)
+## Demonstrar como usar a injeção de dependência (DI)
 
 > A injeção de dependência (**Dependency Injection - DI**) é uma forma de dar à uma classe o que ela precisa para funcionar. 
 
@@ -512,7 +512,7 @@ O método _create_ instancia um novo objeto cada vez que é chamado. O método _
 
 
 
-## 1.5 Demonstrar habilidade no uso de plugins 
+## Demonstrar habilidade no uso de plugins 
 
 ### Demonstrar entendimento dos plugins. Como os plugins são usados no código base? Como eles podem ser usados para personalizações?
 
@@ -524,7 +524,7 @@ O método _create_ instancia um novo objeto cada vez que é chamado. O método _
 - É bom evitar o uso de plugins em situações em que um _observer_ funcione.
 
 
-## 1.6 Configurar event observers e trabalhos agendados (scheduled jobs)
+## Configurar event observers e trabalhos agendados (scheduled jobs)
 
 > _Observers_ e _scheduled jobs_ não devem ser usados para modificar dados. Para isso, use plugins.
 
@@ -560,7 +560,7 @@ Para configurar um trabalho agendado, é necessário atribuir um nome a ele, esp
 </config>
 ```
 
-## 1.7 Utilizar o CLI 
+## Utilizar o CLI 
 
 ### Descreva o uso dos comandos bin/magento no ciclo de desenvolvimento. 
 
@@ -573,7 +573,7 @@ Os comandos da CLI fornecem um ponto de entrada seguro para a realização de op
 A ativação de módulos e a execução de scripts de instalação devem ser feitos usando a linha de comando durante o desenvolvimento. Geralmente, é mais rápido alternar o cache das seções ou liberá-lo durante o desenvolvimento usando a linha de comando em comparação com a interface administrativa.
 
 
-## 1.8 Descrever como as extensões são instaladas e configuradas
+## Descrever como as extensões são instaladas e configuradas
 #### Como você instalaria e verificaria uma extensão a partir da solicitação do cliente?
 Extenções podem ser instaladas diretamente no diretório `app/code` ou através do composer (no diretório `vendor`). Após os arquivos estarem no local correto, o módulo é habilitado `bin/mangento module:enable nome_modulo` e, então, é usado o `bin/magento setup:upgrade` para registrá-lo na aplicação.
 
