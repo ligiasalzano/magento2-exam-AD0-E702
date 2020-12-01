@@ -1,8 +1,12 @@
-## 3. Personalizando a Interface do Usuário (UI)
+---
+title: Personalizando a Interface do Usuário (UI)
+description: Personalizando a Interface do Usuário (UI) no Magento 2
+permalink: /personalizando-a-ui
+---
 
-### 3.1 Demonstrar a capacidade de personalizar a UI da Magento usando temas
+## Demonstrar a capacidade de personalizar a UI da Magento usando temas
 
-#### Quando você deve criar um novo tema?
+### Quando você deve criar um novo tema?
 
 Os temas englobam um conjunto de modificações na interface dos usuários. Eles podem extender e personalizar um tema disponível ou serem totalmente independentes.
 Criar um tema envolve copiar e modificar alguns templates, criar arquivos XML para ajustar layouts e a criação de estilos para adequar a loja ao projeto definido.
@@ -12,13 +16,13 @@ Os temas customizados são localizados em `app/design/frontend/` ou, se for um t
 Dentro desses diretórios, encontramos a pasta do pacote do tema e, dentro dela, a pasta do tema propriamente dito.
 Os únicos arquivos obrigatórios para criar um tema são o `registration.php` e o `theme.xml`.
 
-#### Como você define a hierarquia do tema em um projeto?
+### Como você define a hierarquia do tema em um projeto?
 
 O tema pai é definido no nó `<parent>` dentro do arquivo `theme.xml`.
 
-### 3.2 Demonstrar habilidade para criar personalizações na interface do usuário usando uma combinação de um bloco e template
+## Demonstrar habilidade para criar personalizações na interface do usuário usando uma combinação de um bloco e template
 
-#### Como você atribui um template a um bloco? 
+### Como você atribui um template a um bloco? 
 
 Um template é atribuído à um bloco através de um arquivo de layout XML.
 ```xml
@@ -30,7 +34,7 @@ Um template é atribuído à um bloco através de um arquivo de layout XML.
 > Observação: o caminho para o template phtml é descrito a partir do diretório `templates/`.
 
 
-#### Como você atribui um template diferente a um bloco nativo?
+### Como você atribui um template diferente a um bloco nativo?
 
 A substituição de um arquivo de template de um bloco já existente também é feita em um arquivo de layout XML:
 
@@ -42,9 +46,9 @@ A substituição de um arquivo de template de um bloco já existente também é 
 </referenceBlock>
 ```
 
-### 3.3  Identifique os usos dos diferentes tipos de blocos
+## Identifique os usos dos diferentes tipos de blocos
 
-#### Quando você usaria os tipos de bloco "sem template"?
+### Quando você usaria os tipos de bloco "sem template"?
 
 Quando usamos renderizadores simples. Quando o conteúdo do bloco é gerado dinamicamente ou armazenado em um banco de dados ou em contêineres.
 
@@ -54,9 +58,9 @@ Quando usamos renderizadores simples. Quando o conteúdo do bloco é gerado dina
 
 > Com os contêineres de layout do Magento, os casos de uso de blocos "sem template" são muito poucos. 
 
-### 3.4  Descrever os elementos do esquema de layout XML da Magento, incluindo as principais diretivas XML
+## Descrever os elementos do esquema de layout XML da Magento, incluindo as principais diretivas XML
 
-#### Como você usa as diretivas do layout XML em suas customizações? 
+### Como você usa as diretivas do layout XML em suas customizações? 
 
 As diretivas do layout XML da Magento contém instruções para:
 - Adicionar e excluir recursos estáticos (JavaScript, CSS, fontes) na _head_ da página;
@@ -108,7 +112,7 @@ As diretivas do layout XML da Magento contém instruções para:
 
 > Observação: lembrando que o caminho para o arquivo template.phtml é `<module_dir>/view/<area>/templates` ou `<theme_dir>/<Vendor_Module>/templates`
 
-##### [Instruções gerais de layout](https://devdocs.magento.com/guides/v2.3/frontend-dev-guide/layouts/xml-instructions.html#fedg_layout_xml-instruc_ex)
+#### [Instruções gerais de layout](https://devdocs.magento.com/guides/v2.3/frontend-dev-guide/layouts/xml-instructions.html#fedg_layout_xml-instruc_ex)
 - `<block>`: Criação de blocos. Requerido o _namespace_ completo e a _class_ para o bloco (não coloque um "\" no início do _type_).
 - `<container>`: Um agrupamento de blocos (e outros contêiners). Nele pode-se especificar a tag html que englobará os blocos. Se não houver blocos dentro dele, ele não será mostrado.
 - Atributos _before_ e _after_: Ajuda a definir o posicionamento dos elementos em relação à outros
@@ -118,7 +122,7 @@ As diretivas do layout XML da Magento contém instruções para:
 - `<remove>`: Usado para remover recursos estáticos do _head_ (para remover um bloco ou contêiner, é usado o atributo _remove_ no `<referenceBlock>` ou `<referenceContainer>`).
 - `<update>`: adiciona um arquivo de layout.
 
-#### Como você registra um novo arquivo de layout?
+### Como você registra um novo arquivo de layout?
 
 Você pode criar um novo arquivo de layout em `<module_dir>/view/<area>/layout/<layout-handle>.xml` ou em `<theme_dir>/<Vendor>_<Module>/layout/<layout-handle>.xml`. Nesse arquivo, nomeado com o _handle_ que você definiu, deve conter a declaração do XML e o nó `<page>` como raiz do arquivo:
 
@@ -130,9 +134,9 @@ Você pode criar um novo arquivo de layout em `<module_dir>/view/<area>/layout/<
 ```
 
 
-### 3.5 Criar e adicionar código e marcação em uma determinada página
+## Criar e adicionar código e marcação em uma determinada página
 
-#### Como você adiciona um novo conteúdo em uma página existente usando o layout XML?
+### Como você adiciona um novo conteúdo em uma página existente usando o layout XML?
 
 Deve-se criar um novo arquivo de layout XML no tema ou módulo. O nome do arquivo será o nome do handle da página à ser atualizada.
 Então pode-se usar as instruções descritas acima para realizar as modificações desejadas.
