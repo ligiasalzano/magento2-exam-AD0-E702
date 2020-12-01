@@ -8,6 +8,7 @@ Anotações de estudo para a certificação "Adobe Certified Professional Magent
 Antigamente, esta era a certificação: [Magento Associate Developer](https://spark.adobe.com/page/MRusIqkhBMG0d/).\
 Caso possua uma sugestão ou correção, é só me escrever. :)
 
+
 ### Informações
 O exame é composto por 60 questões de múltipla escolha e tem duração de 120 minutos.
 Para passar, é necessário acertar 68% das respostas.
