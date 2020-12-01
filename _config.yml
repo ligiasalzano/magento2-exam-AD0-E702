@@ -54,4 +54,5 @@ menu:
 
 
 no_search: false
-
+accent_image: none
+accent_color: rgb(52,109,115)
