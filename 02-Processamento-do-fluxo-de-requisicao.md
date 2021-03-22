@@ -6,11 +6,11 @@ permalink: /processamento-do-fluxo-de-requisicao
 
 {:toc}
 
-### Descrever como usar os modos Magento
+## Descrever como usar os modos Magento
 
-#### Entender os prós e contras de usar o modo de desenvolvedor ou o modo de produção. 
+### Entender os prós e contras de usar o modo de desenvolvedor ou o modo de produção. 
 
-O Magento possui três modos: o _defaul_, o _developer_ e o _production_.
+O Magento possui três modos: o _default_, o _developer_ e o _production_.
 
 - **_Default mode_**: 
   - É um híbrido dos modos _developer_ e _production_. Por isso não é o modo ideal nem para desenvolver e nem para a loja em produção.
@@ -21,7 +21,7 @@ O Magento possui três modos: o _defaul_, o _developer_ e o _production_.
 - **_Developer mode_**:
   - Ideal para desenvolvimento.
   - Baixa performace (bem mais lento).
-  - utiliza links simbólicos. Eles podem ser atualizados com o comando `bin/magento dev:static-content:deploy -f` ou removidos manualmente.
+  - Utiliza links simbólicos. Eles podem ser atualizados com o comando `bin/magento dev:static-content:deploy -f` ou removidos manualmente.
   - Os erros são mostrados ao usuário e o log é detalhado. Observação: o log de depuração está desativado por padrão, mesmo no modo de desenvolvedor.
   - Não deve ser usado em produção pois apresenta riscos de segurança.
 - **_Production mode_**
@@ -35,28 +35,29 @@ O Magento possui três modos: o _defaul_, o _developer_ e o _production_.
   - Quando este modo está ativo, o arquivo `.maintenance.flag` é criado na pasta `var/`.
   - É possível configurar uma lista de IPs como exceção ao modo de manutenção
 
-#### Como você ativa/desativa o modo de manutenção?
+### Como você ativa/desativa o modo de manutenção?
 
 Quando o modo de manutenção está ativo, o arquivo `.maintenance.flag` é criado dentro da pasta `var/`. Quando este arquivo não existe, a loja funciona normalmente.
 Há também o arquivo `.maintenance.ip`, no mesmo diretório (`var/`). Nele existe uma lista de IPs que são exceção ao modo de manutenção.
 
 Comandos:
 - Habilitar o modo manutenção: `bin/magento maintenance:enable [--ip=<ip address> ... --ip=<ip address>] | [ip=none]` 
-- Desabilitar: `magento maintenance:disable [--ip=<ip address> ... --ip=<ip address>] | [ip=none]`
-- Verificar o status: `magento maintenance:status`
+- Desabilitar: `bin/magento maintenance:disable [--ip=<ip address> ... --ip=<ip address>] | [ip=none]`
+- Verificar o status: `bin/magento maintenance:status`
 
 Onde:
 - `--ip=<ip address>` representa um IP que será exceção ao modo de manutenção
 
-Para salvar uma lista de IPs, você pode usar: `magento maintenance:allow-ips <ip address> .. <ip address> [--none]`. `--none` limpa a lista.
+Para salvar uma lista de IPs, você pode usar: `bin/magento maintenance:allow-ips <ip address> .. <ip address> [--none]`. 
+O `--none` limpa a lista.
 
 > Depois de colocar o Magento no modo de manutenção, você deve parar todos os processos do consumidor da fila de mensagens.
 > Uma maneira de encontrar esses processos é executar o comando `ps -ef | grep queue:consumer:start`. E então executar o comando `kill <process_id>` para cada consumidor. Em um ambiente com vários nós, certifique-se de repetir esta tarefa em cada nó.
 
 
-### Demonstrar a capacidade de criar um controller frontend com diferentes tipos de resposta (HTML/JSON/redirect)
+## Demonstrar a capacidade de criar um controller frontend com diferentes tipos de resposta (HTML/JSON/redirect)
 
-#### Como você identifica qual módulo/controller corresponde para um determinado URL? 
+### Como você identifica qual módulo/controller corresponde para um determinado URL? 
 
 O Magento determina a área baseado no _frontname_ (`\Magento\Framework\App\AreaList::getCodeByFrontName`). Se nenhum _frontname_ corresponder, a área do _frontname_ padrão é carregada.
 Se a solicitação não for para a API, o Magento analisa o URL. Essa operação é tratada pelo `\Magento\Framework\App\Router\Base::parseRequest`. O caminho (o segmento após o domínio) é explodido com a barra como delimitador.
@@ -70,24 +71,24 @@ Exemplo: sualoja.com/catalog/product/view/id/42
 - O final: `/id/42` corresponde à um parâmetro. É o mesmo que `id=42`.
 
 
-#### O que você faria para criar um determinado URL?
+### O que você faria para criar um determinado URL?
 O URL pode ser criado de várias formas.
 - Definindo o atributo `url_key` para categorias e produtos.
 - Criando um _URL rewrite_ em `Marketing > SEO & Search > URL Rewrites`
 - Dentro de um módulo, criando o frontname no arquivo `My_Company/My_Module/etc/[area]/routes.xml` e o _controller_ em `My_Company/My_Module/Controller/MyController/ActionFile.php`. Observação: todos os _Controllers_ devem estender `\Magento\Framework\App\Action\Action` e ter um método `execute()`.
 
 
-### Demonstrar como usar reescritas de URL de uma página de produto do catálogo para um URL diferente
+## Demonstrar como usar reescritas de URL de uma página de produto do catálogo para um URL diferente
 
-#### Como o URL amigável de um produto ou categoria é definido? 
+### Como o URL amigável de um produto ou categoria é definido? 
 
-Através do atributo `url_key`. Se ele não for definido, ele automáticamente corresponderá ao slug do produto ou categoria.
+Através do atributo `url_key`. Se ele não for definido, ele automaticamente corresponderá ao slug do produto ou categoria.
 
-#### Como você pode mudá-lo? 
+### Como você pode mudá-lo? 
 
 Editando a `url_key` na página de edição do produto ou categoria.
 
-#### Como você determina qual página corresponde a um determinado URL amigável?
+### Como você determina qual página corresponde a um determinado URL amigável?
 
 Através da reescrita de URL ou da criação de uma nova rota em um módulo personalizado.
 
