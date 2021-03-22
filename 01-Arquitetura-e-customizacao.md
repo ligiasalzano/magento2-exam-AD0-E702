@@ -18,19 +18,20 @@ permalink: /arquitetura-e-customizacao
 
 ### Descrever a arquitetura do módulo.
 
-Um módulo é um **grupo lógico** – ou seja, um deiratório contendo _blocks, controllers, helpers e models_ – que é relacionado à um **recurso específico** do negócio. Cada módulo pode adicionar um novo recurso implementando uma nova funcionalidade ou estendendo a funcionalidade de outro módulo. Contudo, o Magento possui foco na modularidade, por isso, um módulo deve trazer apenas um recurso e depender minimamente de outros módulos.
+Um módulo é um **grupo lógico** – ou seja, um diretório contendo _blocks, controllers, helpers e models_ – que é relacionado à um **recurso específico** do negócio. Cada módulo pode adicionar um novo recurso implementando uma nova funcionalidade ou estendendo a funcionalidade de outro módulo. Contudo, o Magento possui foco na modularidade, por isso, um módulo deve trazer apenas um recurso e depender minimamente de outros módulos.
 
-Dessa forma, um módulo deverá ser o mais independente e específico possível. Sendo que a inclusão ou exclusão de um módulo não deve afetar a funcionalidade de outros. [Magento DevDocs - Module overview](https://devdocs.magento.com/guides/v2.3/architecture/archi_perspectives/components/modules/mod_intro.html)
+Dessa forma, um módulo deverá ser o mais independente e específico possível. Sendo que a inclusão ou exclusão de um módulo não deve afetar a funcionalidade de outros. [Magento DevDocs - Module overview](https://devdocs.magento.com/guides/v2.4/architecture/archi_perspectives/components/modules/mod_intro.html)
 
 **Tipos de componentes**
-No Magento existem 3 tipos de componentes:
+
+No Magento, existem 3 tipos de componentes:
 - Módulos (adicionam ou estendem uma funcionalidade)
 - Temas (personalizam a aparência - que podem ser para o frontend ou para a área adminhtml)
 - Pacotes de tradução (adiciona traduções de idioma)
 
 **As áreas do Magento**
 
-Há 7 áreas no Magento:
+Há 7 áreas no Magento: ([referência](https://devdocs.magento.com/guides/v2.4/architecture/archi_perspectives/components/modules/mod_and_areas.html#magento-area-types))
 
 - `adminhtml` - A área adminhtml inclui o código necessário para o gerenciamento da loja. Refere-se ao painel administrativo (admin ou backend) do Magento. 
 - `frontend` - Refere-se à parte da loja na qual haverá a interação com o cliente (usuário final)
@@ -46,21 +47,25 @@ Nem todas as áreas estão disponíveis todo o tempo. Por exemplo, a `crontab` �
 
 Os arquivos necessários para inicializar um módulo são: `registration.php`, `etc/module.xml` e `composer.json`. Sendo que são obrigatórios o `registration.php` e o `etc/module.xml`.
 
-#### Declare o componente e suas dependências no composer.json.
+#### 1º - Crie a estrutura de diretório básica do seu módulo:
+Por exemplo, dentro de `/app/code`, crie o diretório `SuaEmpresa/SeuModulo`.
+
+#### 2º - Declare o componente e suas dependências no `composer.json`.
 
 Nesse arquivo, informamos o nome, descrição, autor e versão do módulo, suas dependências e outras informações.
 No `composer.json`, o **_autoload_** especifica as informações necessarias para serem carregadas, como o arquivo _registration.php_.
+
 ```json
 {
- "name": "Acme-vendor/bar-component",
+ "name": "suaempresa/seu-modulo",
  "autoload": {
-    "psr-4": { "AcmeVendor\\BarComponent\\": "" },
+    "psr-4": { "SuaEmpresa\\SeuModulo\\": "" },
     "files": [ "registration.php" ]
  }
 }
 ```
 
-#### Registre o componente com o arquivo registration.php (obrigatório).
+#### Registre o componente com o arquivo `registration.php` (obrigatório).
 
 Este arquivo é incluído pelo _Composer autoloader_ (`app/etc/NonComposerComponentRegistration.php`).
 Isto adiciona o módulo à lista de componentes em `\Magento\Framework\Component\ComponetRegistrar`.
@@ -69,24 +74,35 @@ Após a leitura deste arquivo, o Magento vai procurar o `etc/module.xml`.
 
 **Registrando alguns tipos de componentes**
 - **Módulos:** `ComponentRegistrar::register(ComponentRegistrar::MODULE, '<VendorName_ModuleName>', __DIR__);`
-- **Temas:** `ComponentRegistrar::register(ComponentRegistrar::THEME, '<area>/<vendor>/<theme name>', __DIR__);`
+- **Temas:** `ComponentRegistrar::register(ComponentRegistrar::THEME, '<area>/<vendor>/<theme_name>', __DIR__);`
 - **Pacotes de tradução:** `ComponentRegistrar::register(ComponentRegistrar::LANGUAGE, '<VendorName>_<packageName>', __DIR__);`
 - **Bibliotecas:** `ComponentRegistrar::register(ComponentRegistrar::LIBRARY, '<vendor>/<library_name>', __DIR__);`
 
 
-#### Nomeie, declare e defina as dependências no arquivo module.xml (obrigatório).
+#### 3º - Nomeie, declare e defina as dependências no arquivo module.xml (obrigatório).
 
 Cada módulo deve ser nomeado e declarado em um arquivo xml específico do componente. 
 - module.xml (modules), theme.xml (themes) and language.xml (for language packages).
 
 O arquivo module.xml é localizado no diretório `<vendor>/<module>/etc`. Neste arquivo também são declaradas a versão do módulo (que será utilizada pelas classes de Setup do módulo) e as suas dependências.
-As dependências são carregadas no elemento `<sequence>`:
+
+```xml
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="SuaEmpresa_SeuModulo" setup_version="1.0.0" />
+</config>
+
+```
+
+As dependências são carregadas no elemento `<sequence>` (que pertence ao nó `<module>`):
 ```xml
 <sequence>
   <module name="Vendor_Module"/>
 </sequence>
 ```
 O nó `<sequence>` reporta ao Magento em qual ordem carregar os módulos. Esse ajuste acontece quando o módulo é instalado. A lista de módulos é armazenada no arquivo `app/etc/config.php`. Esta sequência é montada em `vendor/magento/framework/Module/ModuleList/Loader.php`. Esta organização é muito útil para _events_, _plugins_, _preferences_ e _layouts_.
+
+Na documentação oficial do Magento, temos um exemplo de como criar um novo módulo. [Acesse por aqui](https://devdocs.magento.com/videos/fundamentals/create-a-new-module/).
 
 #### Dependencias do módulo
 
@@ -103,6 +119,7 @@ Dentro dos tipos de depências, um módulo pode ter vários tipos de relações 
 > - **customizes:** o módulo A personaliza o módulo B;
 > - **implements:** o módulo A implementa o módulo B;
 > - **replaces:** o módulo A substitui o módulo B;
+
 > ([Referência](https://amasty.com/blog/magento-2-certification-module-based-architecture/))
 
 Um dos princípios do Magento é a **minimização de dependências**, ou seja, um módulo deve ter o mínimo possível de dependências, bem como, não depender de vários módulos. Isso tem relação com o **princípio de responsabilidade única** em que o módulo deve ter apenas uma função.
@@ -165,7 +182,7 @@ Aqui fica o arquivo `Router.php`, o qual é usado para implementar o servidor _b
 
 **./pub/**
 
-Inclui os arquivos públicos do Magento, como arquivos estáticos (css, imagens, js etc) e páginas de erro. Quando em produção, o Magento deve apontar para esta pasta. Isto tráz segurando à aplicação por proteger a raiz da instalação. 
+Inclui os arquivos públicos do Magento, como arquivos estáticos (css, imagens, js etc) e páginas de erro. Quando em produção, o Magento deve apontar para esta pasta. Isto tras segurança à aplicação por proteger a raiz da instalação. 
 - `pub/errors` - erros
 - `pub/media` - imagens
 - `pub/opt`
@@ -176,12 +193,13 @@ Inclui os arquivos públicos do Magento, como arquivos estáticos (css, imagens,
 **./setup/**
 
 Aqui tem os arquivos do instalador do Magento. 
+> A partir da versão 2.4 do Magento, só é possível instalá-lo através da cli.
 
 **./var/**
 
 Arquivos temporários/gerados como classes, seções, cachê, _backups_ de banco de dados e erros.
 - `var/log`: arquivos de log do sistema, como `exception.log` e `system.log`.
-- `var/cache`: contém todo o cachê do Magneto. Esta pasta é limpa quando rodamos o `bin/magento cache:clean`
+- `var/cache`: contém todo o cache do Magento. Esta pasta é limpa quando rodamos o `bin/magento cache:clean`
 - `var/di`: gerado pelo `bin/magento setup:di:compile`
 
 **./vendor/**
@@ -205,6 +223,7 @@ Dicionários de tradução do tema
 Imagens de pré-visualização do tema.
 
 **/web**
+
 Arquivos estáticos.
 
 - `web/css/source`: arquivos de configuração _LESS_ do tema
@@ -217,7 +236,7 @@ Arquivos estáticos.
 
 **/Api: Service Contracts - Contratos de serviço**
 
-Aqui ficam todas as intefáceis responsáveis pelos contratos de serviço (_services contracts_). Contém as classes que serão expostas na api do Magento. Exemplo `\Magento\Catalog\Api\CategoryListInterface`.
+Aqui ficam todas as interfaces responsáveis pelos contratos de serviço (_services contracts_). Contém as classes que serão expostas na api do Magento. Exemplo `\Magento\Catalog\Api\CategoryListInterface`.
 
 **/Api/Data: Data Service Contracts - Dados dos contratos de serviço**
 
@@ -225,7 +244,7 @@ Esta pasta contém interfaces que representam dados. Exemplos: _Product interfac
 
 **/Block: View Models**
 
-Este diretório faz parte da camada View do MVC. Contém os _View Models_ para os templates do Magento. Os _blocks_ são as classes responsáveis por fazer a inteface entre o template e os _resource models_ do Magento para obter dados, trabalhá-los e passá-los para o template. Eles fornecem a lógica de negócio para os templates, que devem usar o mínimo de PHP (separação de responsábilidades).
+Este diretório faz parte da camada View do MVC. Contém os _View Models_ para os templates do Magento. Os _blocks_ são as classes responsáveis por fazer a inteface entre o template e os _resource models_ do Magento para obter dados, trabalhá-los e passá-los para o template. Eles fornecem a lógica de negócio para os templates, que devem usar o mínimo de PHP (separação de responsabilidades).
 
 **/Console: Console Commands**
 
@@ -233,7 +252,7 @@ Abriga os códigos para os comandos do `bin/magento`. Cada comando que aparece n
 
 **/Controller: Web Request Handlers**
 
-Todos os _controllers_ do módulo ficam aqui. Cada _controller_ deve ter uma única responsábilidade (uma _Action_). Quando uma página é requisitada, o caminho é construído com parâmetros do arquivo `routes.xml` e dos _controllers_ do diretório `/Controller`.
+Todos os _controllers_ do módulo ficam aqui. Cada _controller_ deve ter uma única responsabilidade (uma _Action_). Quando uma página é requisitada, o caminho é construído com parâmetros do arquivo `routes.xml` e dos _controllers_ do diretório `/Controller`.
 
 **/Controller/Adminhtml: Admin controllers**
 
@@ -248,7 +267,7 @@ Possui as crontabs que serão executadas no Magento (tarefas agendadas).
 Este diretório engloba todos os arquivos `.xml` de configuração do módulo. Aqui, as configurações podem ser globais (`etc/`) ou por área (`etc/frontend` ou `etc/adminhtml`).
 Alguns arquivos precisam estar dentro de uma área (`routes.xml` e `sections.xml`), outros devem ser globais (`acl.xml`) e outros podem ser globlais ou específicos de área (`di.xml`).
 
-**/Helper: Occasionally useful for small, reusable code **
+**/Helper: Occasionally useful for small, reusable code**
 
 Classes que contém métodos auxiliares (métodos estáticos), que não devem depender de outras classes.
 
@@ -285,6 +304,8 @@ Os arquivos utilizados aqui são:
 - `InstallData.php`: Configura dados quando o módulo é instalado.
 - `UpgradeData.php`: Modifica dados quando o módulo é atualizado.
 - `RecurringData.php`: aplica-se aos dados após cada instalação ou atualização.
+
+> Para modificar o banco de dados, o Magento criou o `db_schema.xml` que deverá substituir os scripts do diretório _Setup_.
 
 **/Test:**
 
@@ -405,7 +426,7 @@ Configura a web API.
 
 Configura os widgets para serem usados com páginas ou blocos CMS e produtos.
 
-#### Mais arquivos de configuração: [DevDocs - Module configuration files](https://devdocs.magento.com/guides/v2.2/config-guide/config/config-files.html#config-files-classes-objects)
+> Mais arquivos de configuração: [DevDocs - Module configuration files](https://devdocs.magento.com/guides/v2.4/config-guide/config/config-files.html#config-files-classes-objects)
 
 
 ### Descrever o desenvolvimento no contexto dos escopos website e store. 
@@ -414,7 +435,7 @@ Configura os widgets para serem usados com páginas ou blocos CMS e produtos.
 > aguarde...
 
 ### Demonstrar capacidade de adicionar valores diferentes para diferentes escopos.
-####Como você pode buscar o valor de uma configuração do sistema por meio de programação? Como você pode substituir os valores de uma configuração do sistema para uma determinada loja usando a configuração XML?
+#### Como você pode buscar o valor de uma configuração do sistema por meio de programação? Como você pode substituir os valores de uma configuração do sistema para uma determinada loja usando a configuração XML?
 
 > aguarde...
 
@@ -427,7 +448,7 @@ O Magento usa a injeção de construtor, todas as dependências são especificad
 
 #### ObjectManager
 O `ObjectManager` é a unidade interna de armazenamento de objetos do Magento e raramente deve ser acessada diretamente. Ele torna possível a implementação do princípio de composição sobre herança.
-> O Magento proíbe o uso direto do ObjectManager no seu código porque oculta as dependências reais de uma classe. Veja as [regras de uso](https://devdocs.magento.com/guides/v2.2/extension-dev-guide/object-manager.html#usage-rules).
+> O Magento proíbe o uso direto do ObjectManager no seu código porque oculta as dependências reais de uma classe. Veja as [regras de uso](https://devdocs.magento.com/guides/v2.4/extension-dev-guide/object-manager.html#usage-rules).
 
 Responsabilidades do `ObjectManager`:
 - Criação de objetos _factories_ e _proxies_
@@ -460,12 +481,13 @@ Ter um processo centralizado para criar objetos facilita muito o teste. Ele tamb
 - Torna-se possível injetar as dependências da classe no construtor da classe por meio do arquivo di.xml.
 - Permite evitar a herança, o que significa que os aplicativos se tornam mais flexíveis. Assim, você não precisa pensar nas classes filho ao alterar a classe pai.
 
-### Identifique como usar arquivos de configuração DI para personalizar a plataforma Magento. Como você pode substituir uma classe nativa, injetar sua classe em outro objeto e usar outras técnicas disponíveis no `di.xml` (por exemplo, _virtualTypes_)?
+### Identifique como usar arquivos de configuração DI para personalizar a plataforma Magento. 
 
 Para fazer essas personalizações no Magento 2, você precisa usar o arquivo de configuração `<moduleDir>/etc/di.xml`
 
 #### Como substituir uma classe nativa
 > Se houver a possibilidade de usar _plugin_, evite sobreescrever uma classe. Isso pode gerar conflitos.
+
 Para substituir uma classe nativa, use uma entrada `<preference />` para especificar o nome da classe existente (a barra invertida anterior \ é opcional) e a classe a ser substituída.
 As preferências são usadas para substituir classes inteiras. Eles também podem ser usados para especificar uma classe concreta para uma interface.
 
@@ -476,7 +498,8 @@ As preferências são usadas para substituir classes inteiras. Eles também pode
 ```
 
 #### Como injetar uma classe em outro objeto
-Use uma entrada `<type/>` com uma entrada `<argument xsi:type="object">\Path\To\Your\Class</argument>` dentro do nó `<arguments/>`.
+Use uma entrada `<type/>` com name `providers` (`<argument name="providers" xsi:type="object">\Path\To\Your\Class</argument>`) dentro do nó `<arguments/>`.
+
 Exemplo: `Magento\Sales\Model\ResourceModel\Provider\UpdatedIdListProvider` é a nossa classe que queremos injetar e `vendor/magento/module-sales/Model/ResourceModel/Provider/NotSyncedDataProvider.php`é o objeto de classe no qual vamos injetar a nossa classe.
 
 ```xml
@@ -509,13 +532,16 @@ _Virtual Types_ são convenientes para DI apenas no caso de precisarmos indicar 
 </type>
 ```
 
-### Dado um cenário, determinar como obter um objeto usando o objeto ObjectManager. Como você obteria uma instância de classe de diferentes locais no código?
+### Dado um cenário, determinar como obter um objeto usando o objeto ObjectManager. 
+
+#### Como você obteria uma instância de classe de diferentes locais no código?
+
 Podemos acessar uma classe de duas formas:
 
-#### Com PHP puro:
+##### Com PHP puro:
 Com ```php $object = new SomeClass();```.
 
-#### Com o ObjectManager (preferencialmente):
+##### Com o ObjectManager (preferencialmente):
 Usando o ```php $objectManager->create(‘SomeClass’);``` ou ```php $objectManager->get(‘SomeClass’);```.
 O método _create_ instancia um novo objeto cada vez que é chamado. O método _get_ instancia um objeto uma vez e, em chamadas futuras, o _get_ retorna o mesmo objeto. Esse comportamento é semelhante às _factories_ `getModel` e `getSingleton` do Magento 1
 
@@ -539,10 +565,11 @@ O método _create_ instancia um novo objeto cada vez que é chamado. O método _
 ### Demonstrar como criar uma customização usando um event observer. 
 
 #### Como os observers são registrados? Como eles são definidos para frontend ou backend? 
-Os _observers_ são criados no arquivo `events.xml`, no diretório `/etc`. Se o evento for específico para uma área (backend ou frontend), é criado um diretório para a área requerida. 
+
+Os _observers_ são registrados no arquivo `events.xml`, no diretório `/etc`. Se o evento for específico para uma área (backend ou frontend), é criado um diretório para a área requerida. 
 Ex.: `/etc/[area]/events.xml` - `/etc/frontend/` e `/etc/adminhtml/`.
 
-O evento é registrado no nó `<events>`:
+O evento é registrado no nó `<event>`:
 
 ```xml
 <event name="event_for_your_observer_to_listen_for">
