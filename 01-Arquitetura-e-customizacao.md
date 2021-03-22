@@ -135,7 +135,7 @@ Os arquivos JavaScript são encontrados na pasta `/view/<area>/web/`. Os HTML (c
 
 #### Estrutura de arquivos do Magento
 
-##### ./app/
+**./app/**
 
 Contém módulos, temas, traduções e configurações globais.
 - `./app/code/`: módulos
@@ -143,27 +143,27 @@ Contém módulos, temas, traduções e configurações globais.
 - `./app/etc/`: configurações globais
 - `./app/i18n/`: traduções
 
-##### ./bin/
+**./bin/**
 
 O script executável da CLI do Magento. Daqui vem o comando `bin/magento`.
 
-##### ./dev/
+**./dev/**
 
 Ferramentas para desenvolvedores. Armazena testes funcionais automatizados que foram executados pelo Magento Test Framework.
 
-##### ./generated/
+**./generated/**
 
 Aqui é armazenado os códigos gerados automaticamente pelo Magento, como _Factories_, _Proxies_, _Interceptors_ etc. Na configuração padrão, se a classe for injetada em um construtor, o código será gerado pelo Magento para criar _non-existent factory classes_. 
 
-##### ./lib/
+**./lib/**
 
 Este diretório contém todos os arquivos de bibliotecas do Magento e do `vendor`. Ele também inclui todo o código Magento não baseado em módulo.
 
-##### ./phpserver/
+**./phpserver/**
 
 Aqui fica o arquivo `Router.php`, o qual é usado para implementar o servidor _built-in_ do PHP. No entanto, por questões de segurança, não é recomendável trabalhar com ele. Serve para casos específicos.
 
-##### ./pub/
+**./pub/**
 
 Inclui os arquivos públicos do Magento, como arquivos estáticos (css, imagens, js etc) e páginas de erro. Quando em produção, o Magento deve apontar para esta pasta. Isto tráz segurando à aplicação por proteger a raiz da instalação. 
 - `pub/errors` - erros
@@ -173,18 +173,18 @@ Inclui os arquivos públicos do Magento, como arquivos estáticos (css, imagens,
 - `pub/cron.php`
 - `pub/index.php`
 
-##### ./setup/
+**./setup/**
 
 Aqui tem os arquivos do instalador do Magento. 
 
-##### ./var/
+**./var/**
 
 Arquivos temporários/gerados como classes, seções, cachê, _backups_ de banco de dados e erros.
 - `var/log`: arquivos de log do sistema, como `exception.log` e `system.log`.
 - `var/cache`: contém todo o cachê do Magneto. Esta pasta é limpa quando rodamos o `bin/magento cache:clean`
 - `var/di`: gerado pelo `bin/magento setup:di:compile`
 
-##### ./vendor/
+**./vendor/**
 
 Diretório nativo do _Composer_. Contém o _framework core_. Tudo o que for instalado pelo _Composer_ vem para este diretório.
 Aqui encontram-se todos os módulos do Magento.
@@ -192,19 +192,19 @@ Aqui encontram-se todos os módulos do Magento.
 
 #### Estrutura de arquivos dos temas
 
-##### /etc
+**/etc**
 
 Arquivos de configuração como o view.xml
 
-##### /i18n
+**/i18n**
 
 Dicionários de tradução do tema
 
-##### /media
+**/media**
 
 Imagens de pré-visualização do tema.
 
-##### /web
+**/web**
 Arquivos estáticos.
 
 - `web/css/source`: arquivos de configuração _LESS_ do tema
@@ -215,66 +215,66 @@ Arquivos estáticos.
 
 #### Estrutura de arquivos dos módulos
 
-##### /Api: Service Contracts - Contratos de serviço
+**/Api: Service Contracts - Contratos de serviço**
 
 Aqui ficam todas as intefáceis responsáveis pelos contratos de serviço (_services contracts_). Contém as classes que serão expostas na api do Magento. Exemplo `\Magento\Catalog\Api\CategoryListInterface`.
 
-##### /Api/Data: Data Service Contracts - Dados dos contratos de serviço
+**/Api/Data: Data Service Contracts - Dados dos contratos de serviço**
 
 Esta pasta contém interfaces que representam dados. Exemplos: _Product interface, Category interface_ e _Customer interface_.
 
-##### /Block: View Models
+**/Block: View Models**
 
 Este diretório faz parte da camada View do MVC. Contém os _View Models_ para os templates do Magento. Os _blocks_ são as classes responsáveis por fazer a inteface entre o template e os _resource models_ do Magento para obter dados, trabalhá-los e passá-los para o template. Eles fornecem a lógica de negócio para os templates, que devem usar o mínimo de PHP (separação de responsábilidades).
 
-##### /Console: Console Commands
+**/Console: Console Commands**
 
 Abriga os códigos para os comandos do `bin/magento`. Cada comando que aparece na listagem do CLI é referente à uma classe desse diretório.
 
-##### /Controller: Web Request Handlers
+**/Controller: Web Request Handlers**
 
 Todos os _controllers_ do módulo ficam aqui. Cada _controller_ deve ter uma única responsábilidade (uma _Action_). Quando uma página é requisitada, o caminho é construído com parâmetros do arquivo `routes.xml` e dos _controllers_ do diretório `/Controller`.
 
-##### /Controller/Adminhtml: Admin controllers
+**/Controller/Adminhtml: Admin controllers**
 
 Aqui ficam os _controllers_ da área adminhtml.
 
-##### /Cron: Cron Job Classes
+**/Cron: Cron Job Classes**
 
 Possui as crontabs que serão executadas no Magento (tarefas agendadas). 
 
-##### /etc: Configuration files
+**/etc: Configuration files**
 
 Este diretório engloba todos os arquivos `.xml` de configuração do módulo. Aqui, as configurações podem ser globais (`etc/`) ou por área (`etc/frontend` ou `etc/adminhtml`).
 Alguns arquivos precisam estar dentro de uma área (`routes.xml` e `sections.xml`), outros devem ser globais (`acl.xml`) e outros podem ser globlais ou específicos de área (`di.xml`).
 
-##### /Helper: Occasionally useful for small, reusable code 
+**/Helper: Occasionally useful for small, reusable code **
 
 Classes que contém métodos auxiliares (métodos estáticos), que não devem depender de outras classes.
 
-##### /i18n: Translation CSV Files
+**/i18n: Translation CSV Files**
 
 Aqui estão todos os arquivos CSV de tradução. Esses CSVs possuem duas colunas: _de_ e _para_.
 
-##### /Model: Data Handling and Structures
+**/Model: Data Handling and Structures**
 
 Nesta pasta ficam os _Models_, classes que lidam diretamente com o banco de dados. 
 
-##### /Model/ResourceModel: Database Interactions
+**/Model/ResourceModel: Database Interactions**
 
 Aqui são as classes que definem como os dados devem ser recuperados e salvos no banco de dados. Qualquer interação direta com o bando de dados deve acontecer nesses arquivos.
 
-##### /Observer: Event Listeners
+**/Observer: Event Listeners**
 
 Todos os _Observers_ são incluídos neste diretório. Quando o Magento dispara um evento, as classes que estão observando esse evento são chamadas. Os _event listeners_ devem implementar o `ObserverInteface` (`\Magento\
 Framework\Event\ObserverInterface`). A classe PHP deve serguir o padrão _TitleCase_ enquanto o evento deve seguir o _snake_case_. 
 Deve-se evitar colocar lógica de negócio em um observer. O correto seria injetá-la no _Observer_. 
 
-##### /Plugin: Function Modification
+**/Plugin: Function Modification**
 
 O conceito de _Plugin_ foi introduzido no Magento 2. Os _Plugins_ permitem modificar funcionalidades da maioria das classes e interfaces. Plugins funcionam apenas em objetos que foram instanciados pelo _ObjectManager_. Por convenção, os plugins são colocados no diretório `/Plugin`.
 
-##### /Setup: Database Modification
+**/Setup: Database Modification**
 
 Os arquivos que modificam o banco de dados durante a instalação ou atualização de um módulo são colocados neste diretório. 
 Os arquivos utilizados aqui são:
@@ -286,48 +286,46 @@ Os arquivos utilizados aqui são:
 - `UpgradeData.php`: Modifica dados quando o módulo é atualizado.
 - `RecurringData.php`: aplica-se aos dados após cada instalação ou atualização.
 
-##### /Test:
+**/Test:**
 
 O Magento 2 adotou o TDD (Test Driven Development). Todos os testes ficam neste diretório.
 
-##### /Ui: UI Component Data Providers
+**/Ui: UI Component Data Providers**
 
 Aqui ficam todos os _Models_ utilizados pelos componentes UI.
 
-##### /view/[area]/templates: Block Templates
+**/view/[area]/templates: Block Templates**
 
 Enquanto a lógica de negócio é representada nos `Blocks`, a forma como essa lógica é apresentada ao usuário é definida nos arquivos de template. Esses arquivos devem conter o mínimo possível de PHP. 
 Observação: note que o nome desta pasta é escrito no plural: templates.
 
-##### /view/adminhtml/ui_component: UI Components
+**/view/adminhtml/ui_component: UI Components**
 
 Este diretório contêm os arquivos XML de configuração dos _UI Components_. Eles flexibilizam a renderização da interface do usuário. _Grids_ e _Forms_ do admin, bem como o _checkout_ são feitos com _UI Components_.
 
-##### /view/[area]/web: Web Assets
+**/view/[area]/web: Web Assets**
 
 Este é o lugar onde os recursos da Web são armazenados. Isso inclui JS, CSS (ou LESS / SCSS) e imagens.
 
-##### /view/[area]/web/template: JS Templates
+**/view/[area]/web/template: JS Templates**
 
 Os modelos HTML que podem ser solicitados de forma assíncrona com Javascript são colocados aqui.
 Observação: cuidado para não confundir. O nome desta pasta é no singular, template.
 
-##### /view/[area]/requirejs-config.js
+**/view/[area]/requirejs-config.js**
 
 Aqui ficam as configurações RequireJS do módulo. Essa configuração é usada para controlar as dependências do módulo Javascript, criar aliases e declarar mixins
 
 ### Quais são as convenções de nome e como os _namespaces_ são estabelecidos? Como identificar os arquivos responsáveis por uma certa funcionalidade?
 
-> ###### Preciso melhorar essa parte. Desculpe, ainda não pude fazer isso.
-
-Os _namespaces_ são utilizados para evitar conflitos de nomes no código. Eles ajudam a deixar as coisas organizadas. No PHP, um _namespace_ determina onde o arquivo PHP está localizado na hierarquia do _namespace_. Assim, o nome da classe pode ser reutilizado em _namespaces_ diferentes.
-
-> Para referenciar uma classe, usamos a palavra-chave `::class`. Ex.: `$this->get(ClassName::class);` ou `$this->get(\Magento\Path\To\Class::class);`.
+Os _namespaces_ são utilizados para evitar conflitos de nomes no código. Eles ajudam a deixar as coisas organizadas. No PHP, um _namespace_ determina onde o arquivo PHP (o arquivo da classe) está localizado na hierarquia do _namespace_. Assim, o nome da classe pode ser reutilizado em _namespaces_ diferentes. 
+Além disso, O _namespace_ e o nome da classe auxiliam para identificar onde está o arquivo.
 
 #### Semântica
 
 1. Para nomes de atributos e valores, deve-se utilizar palavras escritas em minúsculo, não abreviadas, com caracteres do Latin e concatenadas com hífen (-)
 Exemplo:
+
 ```html
 <section id="information-dialog-tree">
    <p> ... </p>
@@ -338,72 +336,72 @@ Exemplo:
 
 Alguns diretórios já estão definidos, por convenção, para serem responsáves por certas funcionalidades. Eles foram descritos nesta seção. Contudo, um módulo pode conter um diretório específico para alguma funcionalidade pouco comum. Nestes casos, é necessário inspecionar o diretório para averiguar a funcionalidade pela qual ele é responsável.
 
-O _namespace_ e o nome da classe auxiliam para identificar o arquivo. Por exemplo, o caminho do arquivo da classe PHP `TestCommand` do namespace `Magenteiro\PrimeiroModulo\Console\Command` é o `app/code/Magenteiro/PrimeiroModulo/Console/Command/TestCommand.php`.
+O _namespace_ no Magento é composto desta forma: `Vendor/Module/Path/Class`. Por exemplo, a classe `RegistryConstants`, pertencente ao módulo `Magento_CatalogRule`, pertence ao _namespace_ `Magento\CatalogRule\Controller`. Isso significa que o arquivo da classe (`RegistryConstants.php`) fica dentro de: `/vendor/magento/module-catalogrule/Controller/RegistryConstants.php` ou `/app/code/Magento/CatalogRule/Controller` (dependendo do tipo da instalação).
 
-## Utilizar configuração e escopo de variáveis de configuração
+## Utilizar o escopo de configuração e o escopo de variáveis de configuração
 
 ### Determinar como usar os arquivos de configuração na Magento. Quais arquivos de configuração são importantes no ciclo de desenvolvimento?
 
 O Magento 2 dividiu as configurações em vários arquivos XML, isso evita que tenhamos apenas um arquivo muito longo. Adicionalmente, podemos separar os arquivos em áreas, restringindo determinada configuração à área a qual ela afeta.
 Logo abaixo, estão relacionados os principais arquivos de configuração do Magento. Eles estão localizados no diretório `/etc` do módulo.
 
-#### `module.xml`
+**`module.xml`**
 
 É o único arquivo de configuração obrigatório. Nele são especificados a versão do módulo e sua ordem de carregamento.
 
-#### `acl.xml`
+**`acl.xml`**
 
 _Access Control List Rules (ACL)_. Aqui são definidas as permissões de acesso dos usuários à recursos. 
 
-#### `config.xml`
+**`config.xml`**
 
 Carregado na configuração padrão (`Stores > Configuration`). 
 
-#### `crontab.xml`
+**`crontab.xml`**
 
 Para os trabalhos agendados.
 
-#### `di.xml`
+**`di.xml`**
 
 É um dos arquivos mais utilizados quando estamos personalizando o Magento. Aqui são configuradas as injeções de dependência: plugins são definidos, classes são substituídas, classes concretas são especificadas, dentre outros.
 
-#### `email_templates.xml`
+**`email_templates.xml`**
 
 Determina os templates de e-mail que serão usados no Magento.
 
-#### `events.xml`
+**`events.xml`**
 
 Esse arquivo frequentemente é criado dentro de uma área específica. Nele são registrados os _event listeners_.
 
-#### `indexer.xml`
+**`indexer.xml`**
 
 Configura os indexadores do Magento.
 
-#### `adminhtml/menu.xml`
+**`adminhtml/menu.xml`**
 
 Configura um menu na área adminhtml.
 
-#### `adminhtml/system.xml`
+**`adminhtml/system.xml`**
 
 Aqui são definidas as _tabs_, _sections_, _groups_ e _fields_ que existem na configuração da loja (`Stores > Configuration`).
 
-#### `mview.xml`
+**`mview.xml`**
 
 Usado frequentemente para o processo de indexação, aqui é configurado o disparo de um evento quando uma coluna do banco de dados é alterada.
 
-#### `<area>/routes.xml`
+**`<area>/routes.xml`**
 
 Diz ao Magento que a área aceita _web requests_. O nó da rota configura a primeira parte do _layout handle_ (ID da rota) e o _frontname_ (primeira parte da URL após o domínio).
 
-#### `view.xml`
+**`view.xml`**
 
 Especifica valores padrão para configurações relacionadas ao design. É semelhante ao `config.xml`.
 
-#### `webapi.xml`
+**`webapi.xml`**
 
 Configura a web API. 
 
-#### `widget.xml`
+**`widget.xml`**
 
 Configura os widgets para serem usados com páginas ou blocos CMS e produtos.
 
@@ -412,7 +410,11 @@ Configura os widgets para serem usados com páginas ou blocos CMS e produtos.
 
 ### Descrever o desenvolvimento no contexto dos escopos website e store. Como você pode identificar o escopo de configuração para uma certa variável? Como os escopos nativos da Magento (por exemplo, preço ou estoque) podem afetar o desenvolvimento e o processo de tomada de decisão?
 
+> aguarde...
+
 ### Demonstrar capacidade de adicionar valores diferentes para diferentes escopos. Como você pode buscar o valor de uma configuração do sistema por meio de programação? Como você pode substituir os valores de uma configuração do sistema para uma determinada loja usando a configuração XML?
+
+> aguarde...
 
 ## Demonstrar como usar a injeção de dependência (DI)
 
@@ -456,7 +458,7 @@ Ter um processo centralizado para criar objetos facilita muito o teste. Ele tamb
 - Torna-se possível injetar as dependências da classe no construtor da classe por meio do arquivo di.xml.
 - Permite evitar a herança, o que significa que os aplicativos se tornam mais flexíveis. Assim, você não precisa pensar nas classes filho ao alterar a classe pai.
 
-### Identifique como usar arquivos de configuração DI para personalizar a plataforma Magento. Como você pode substituir uma classe nativa, injetar sua classe em outro objeto e usar outras técnicas disponíveis no di.xml (por exemplo,virtualTypes)?
+### Identifique como usar arquivos de configuração DI para personalizar a plataforma Magento. Como você pode substituir uma classe nativa, injetar sua classe em outro objeto e usar outras técnicas disponíveis no `di.xml` (por exemplo, _virtualTypes_)?
 
 Para fazer essas personalizações no Magento 2, você precisa usar o arquivo de configuração `<moduleDir>/etc/di.xml`
 
@@ -464,6 +466,7 @@ Para fazer essas personalizações no Magento 2, você precisa usar o arquivo de
 > Se houver a possibilidade de usar _plugin_, evite sobreescrever uma classe. Isso pode gerar conflitos.
 Para substituir uma classe nativa, use uma entrada `<preference />` para especificar o nome da classe existente (a barra invertida anterior \ é opcional) e a classe a ser substituída.
 As preferências são usadas para substituir classes inteiras. Eles também podem ser usados para especificar uma classe concreta para uma interface.
+
 ```xml
 <config>
     <preference for="Magento\Catalog\Api\Data\ProductInterface" type=YourVendor\Catalog\Model\Product" />
@@ -504,16 +507,15 @@ _Virtual Types_ são convenientes para DI apenas no caso de precisarmos indicar 
 </type>
 ```
 
-
 ### Dado um cenário, determinar como obter um objeto usando o objeto ObjectManager. Como você obteria uma instância de classe de diferentes locais no código?
 Podemos acessar uma classe de duas formas:
+
 #### Com PHP puro:
 Com ```php $object = new SomeClass();```.
 
 #### Com o ObjectManager (preferencialmente):
 Usando o ```php $objectManager->create(‘SomeClass’);``` ou ```php $objectManager->get(‘SomeClass’);```.
 O método _create_ instancia um novo objeto cada vez que é chamado. O método _get_ instancia um objeto uma vez e, em chamadas futuras, o _get_ retorna o mesmo objeto. Esse comportamento é semelhante às _factories_ `getModel` e `getSingleton` do Magento 1
-
 
 
 ## Demonstrar habilidade no uso de plugins 
@@ -539,6 +541,7 @@ Os _observers_ são criados no arquivo `events.xml`, no diretório `/etc`. Se o 
 Ex.: `/etc/[area]/events.xml` - `/etc/frontend/` e `/etc/adminhtml/`.
 
 O evento é registrado no nó `<events>`:
+
 ```xml
 <event name="event_for_your_observer_to_listen_for">
    <observer name="observerName" instance="Your\Observer\Class" />
@@ -551,6 +554,7 @@ Eventos devem ser usados quando não se quer modificar dados. Eles podem ser aci
 #### Como os trabalhos agendados (scheduled jobs) são configurados?
 Os trabalhos agendados são configurados no arquivo `crontab.xml`, dentro do diretório `/etc` (não em `/etc/[area]`).
 Para configurar um trabalho agendado, é necessário atribuir um nome a ele, especificar a função que ele deve executar, a classe à qual essa função pertence e definir o agendamento usando a notação regular de agendamento cron.
+
 ```xml
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"    
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
