@@ -408,11 +408,13 @@ Configura os widgets para serem usados com páginas ou blocos CMS e produtos.
 #### Mais arquivos de configuração: [DevDocs - Module configuration files](https://devdocs.magento.com/guides/v2.2/config-guide/config/config-files.html#config-files-classes-objects)
 
 
-### Descrever o desenvolvimento no contexto dos escopos website e store. Como você pode identificar o escopo de configuração para uma certa variável? Como os escopos nativos da Magento (por exemplo, preço ou estoque) podem afetar o desenvolvimento e o processo de tomada de decisão?
+### Descrever o desenvolvimento no contexto dos escopos website e store. 
+#### Como você pode identificar o escopo de configuração para uma certa variável? Como os escopos nativos da Magento (por exemplo, preço ou estoque) podem afetar o desenvolvimento e o processo de tomada de decisão?
 
 > aguarde...
 
-### Demonstrar capacidade de adicionar valores diferentes para diferentes escopos. Como você pode buscar o valor de uma configuração do sistema por meio de programação? Como você pode substituir os valores de uma configuração do sistema para uma determinada loja usando a configuração XML?
+### Demonstrar capacidade de adicionar valores diferentes para diferentes escopos.
+####Como você pode buscar o valor de uma configuração do sistema por meio de programação? Como você pode substituir os valores de uma configuração do sistema para uma determinada loja usando a configuração XML?
 
 > aguarde...
 
