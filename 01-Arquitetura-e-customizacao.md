@@ -200,7 +200,6 @@ Aqui tem os arquivos do instalador do Magento.
 Arquivos temporários/gerados como classes, seções, cachê, _backups_ de banco de dados e erros.
 - `var/log`: arquivos de log do sistema, como `exception.log` e `system.log`.
 - `var/cache`: contém todo o cache do Magento. Esta pasta é limpa quando rodamos o `bin/magento cache:clean`
-- `var/di`: gerado pelo `bin/magento setup:di:compile`
 
 **./vendor/**
 
