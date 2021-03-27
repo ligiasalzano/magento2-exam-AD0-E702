@@ -4,11 +4,15 @@ description: Processamento do Fluxo de Requisição no Magento 2
 permalink: /processamento-do-fluxo-de-requisicao
 ---
 
+1. Descrever como usar os modos Magento
+2.  Demonstrar a capacidade de criar um controller frontend com diferentes tipos de resposta (HTML/JSON/redirect)
+3.  Demonstrar como usar reescritas de URL de uma página de produto do catálogo para um URL diferente
+
 {:toc}
 
 ## Descrever como usar os modos Magento
 
-### Entender os prós e contras de usar o modo de desenvolvedor ou o modo de produção. 
+**Entender os prós e contras de usar o modo de desenvolvedor ou o modo de produção.**
 
 O Magento possui três modos: o _default_, o _developer_ e o _production_.
 
@@ -35,7 +39,7 @@ O Magento possui três modos: o _default_, o _developer_ e o _production_.
   - Quando este modo está ativo, o arquivo `.maintenance.flag` é criado na pasta `var/`.
   - É possível configurar uma lista de IPs como exceção ao modo de manutenção
 
-### Como você ativa/desativa o modo de manutenção?
+**Como você ativa/desativa o modo de manutenção?**
 
 Quando o modo de manutenção está ativo, o arquivo `.maintenance.flag` é criado dentro da pasta `var/`. Quando este arquivo não existe, a loja funciona normalmente.
 Há também o arquivo `.maintenance.ip`, no mesmo diretório (`var/`). Nele existe uma lista de IPs que são exceção ao modo de manutenção.
@@ -57,7 +61,7 @@ O `--none` limpa a lista.
 
 ## Demonstrar a capacidade de criar um controller frontend com diferentes tipos de resposta (HTML/JSON/redirect)
 
-### Como você identifica qual módulo/controller corresponde para um determinado URL? 
+**Como você identifica qual módulo/controller corresponde para um determinado URL?**
 
 O Magento determina a área baseado no _frontname_ (`\Magento\Framework\App\AreaList::getCodeByFrontName`). Se nenhum _frontname_ corresponder, a área do _frontname_ padrão é carregada.
 Se a solicitação não for para a API, o Magento analisa o URL. Essa operação é tratada pelo `\Magento\Framework\App\Router\Base::parseRequest`. O caminho (o segmento após o domínio) é explodido com a barra como delimitador.
@@ -71,7 +75,7 @@ Exemplo: sualoja.com/catalog/product/view/id/42
 - O final: `/id/42` corresponde à um parâmetro. É o mesmo que `id=42`.
 
 
-### O que você faria para criar um determinado URL?
+**O que você faria para criar um determinado URL?**
 O URL pode ser criado de várias formas.
 - Definindo o atributo `url_key` para categorias e produtos.
 - Criando um _URL rewrite_ em `Marketing > SEO & Search > URL Rewrites`
@@ -80,15 +84,15 @@ O URL pode ser criado de várias formas.
 
 ## Demonstrar como usar reescritas de URL de uma página de produto do catálogo para um URL diferente
 
-### Como o URL amigável de um produto ou categoria é definido? 
+**Como o URL amigável de um produto ou categoria é definido?**
 
 Através do atributo `url_key`. Se ele não for definido, ele automaticamente corresponderá ao slug do produto ou categoria.
 
-### Como você pode mudá-lo? 
+**Como você pode mudá-lo?**
 
 Editando a `url_key` na página de edição do produto ou categoria.
 
-### Como você determina qual página corresponde a um determinado URL amigável?
+**Como você determina qual página corresponde a um determinado URL amigável?**
 
 Através da reescrita de URL ou da criação de uma nova rota em um módulo personalizado.
 
