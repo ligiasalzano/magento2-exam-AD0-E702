@@ -13,7 +13,7 @@ permalink: /processamento-do-fluxo-de-requisicao
 
 **Entender os prós e contras de usar o modo de desenvolvedor ou o modo de produção.**
 
-O Magento possui três modos: o _default_, o _developer_ e o _production_.
+O Magento possui três modos: o _default_, o _developer_ e o _production_. ([Referência](https://devdocs.magento.com/guides/v2.4/config-guide/bootstrap/magento-modes.html)).
 
 - **_Default mode_**: 
   - É um híbrido dos modos _developer_ e _production_. Por isso não é o modo ideal nem para desenvolver e nem para a loja em produção.
