@@ -7,7 +7,6 @@ permalink: /processamento-do-fluxo-de-requisicao
 1. Descrever como usar os modos Magento
 2.  Demonstrar a capacidade de criar um controller frontend com diferentes tipos de resposta (HTML/JSON/redirect)
 3.  Demonstrar como usar reescritas de URL de uma página de produto do catálogo para um URL diferente
-
 {:toc}
 
 ## Descrever como usar os modos Magento
