@@ -463,13 +463,17 @@ Configura os widgets para serem usados com páginas ou blocos CMS e produtos.
 **Como você pode identificar o escopo de configuração para uma certa variável?**
 **Como os escopos nativos da Magento (por exemplo, preço ou estoque) podem afetar o desenvolvimento e o processo de tomada de decisão?**
 
-> aguarde...
+> ...
 
 ### Demonstrar capacidade de adicionar valores diferentes para diferentes escopos.
+
 **Como você pode buscar o valor de uma configuração do sistema por meio de programação?**
+
+Você pode usar os métodos contidos na classe `Magento\Framework\App\Config\ScopeConfigInterface`, passando o caminho da configuração como parâmetro, por exemplo: `web/secure/base_url`.
+
 **Como você pode substituir os valores de uma configuração do sistema para uma determinada loja usando a configuração XML?**
 
-> aguarde...
+Você pode definir valores de configuração através do arquivo `config.xml`.
 
 ## Demonstrar como usar a injeção de dependência (DI)
 
