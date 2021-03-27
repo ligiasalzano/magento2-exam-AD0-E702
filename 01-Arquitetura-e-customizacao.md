@@ -471,6 +471,10 @@ Configura os widgets para serem usados com páginas ou blocos CMS e produtos.
 
 Você pode usar os métodos contidos na classe `Magento\Framework\App\Config\ScopeConfigInterface`, passando o caminho da configuração como parâmetro, por exemplo: `web/secure/base_url`.
 
+```php
+$this->scopeConfig->getValue(static::PATH_ENABLED, $scopeType, $scopeCode);
+```
+
 **Como você pode substituir os valores de uma configuração do sistema para uma determinada loja usando a configuração XML?**
 
 Você pode definir valores de configuração através do arquivo `config.xml`.
