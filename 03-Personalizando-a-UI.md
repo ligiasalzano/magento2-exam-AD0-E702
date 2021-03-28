@@ -151,5 +151,38 @@ Você pode criar um novo arquivo de layout em `<module_dir>/view/<area>/layout/<
 
 **Como você adiciona um novo conteúdo em uma página existente usando o layout XML?**
 
-Deve-se criar um novo arquivo de layout XML no tema ou módulo. O nome do arquivo será o nome do handle da página à ser atualizada.
+Pode-se criar um novo arquivo de layout XML no tema ou módulo para modificar blocos e containers. O nome do arquivo será o nome do handle da página à ser atualizada.
 Então pode-se usar as instruções descritas acima para realizar as modificações desejadas.
+
+Para modificar o layout da página, cria-se um arquivo de layout dentro de `app/design/frontend/<VendorName>/<ThemeName>/Magento_Theme/page_layout/`.
+
+Por exemplo, para modificar o layout de 3 colunas, criamos o arquivo `<VendorName>/<ThemeName>/Magento_Theme/page_layout/3-columns-double-footer.xml`, por exemplo, com o seguinte conteúdo:
+
+```xml
+<?xml version="1.0"?>
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd">
+    <update handle="3columns"/>
+    <referenceContainer name="page.wrapper">
+        <container name="footer-bottom" as="footer-bottom" after="footer" label="Footer Bottom" htmlTag="footer" htmlClass="page-footer-bottom">
+            <container name="footer-bottom-content" as="footer-bottom-content" htmlTag="div" htmlClass="footer content">
+                <block class="Magento\Framework\View\Element\Template" name="report.bugs.bottom" template="Magento_Theme::html/bugreport.phtml"/>
+            </container>
+        </container>
+    </referenceContainer>
+</layout>
+```
+
+Após criar o arquivo de layout, deve-se registrá-lo no arquivo `layouts.xml`, cujo caminho é: `app/design/frontend/<VendorName>/<ThemeName>/Magento_Theme/layouts.xml`.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<page_layouts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/PageLayout/etc/layouts.xsd">
+    <layout id="3-columns-double-footer">
+        <label translate="true">3 Columns Double Footer</label>
+    </layout>
+</page_layouts>
+```
+
+Observe que o valor do novo atributo layout id deve corresponder ao nome do arquivo XML de layout de página recém-criado.
+
+Veja com mais detalhes [aqui na documentação](https://devdocs.magento.com/guides/v2.4/frontend-dev-guide/layouts/layout-create.html).
