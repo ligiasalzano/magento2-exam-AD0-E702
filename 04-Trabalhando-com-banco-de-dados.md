@@ -4,16 +4,24 @@ description: Trabalhando com Banco de Dados no Magento 2
 permalink: /trabalhando-com-banco-de-dados
 ---
 
+1. Descrever os conceitos básicos de models, resource models e collections
+2. Descrever como ocorre a leitura e gravação de uma entidade
+3. Descrever como filtrar, ordenar e especificar os valores selecionados para _collections_ e _repositories_
+4. Demonstrar habilidade para usar o esquema declarativo (_declarative schema_)
+{:toc}
+
+
 ## Descrever os conceitos básicos de models, resource models e collections
 
-### Quais são as responsabilidades de cada um dos tipos de objeto ORM (Object Relational Mapping ou Mapeamento Objeto Relacional)? Como eles se relacionam uns com os outros?
+**Quais são as responsabilidades de cada um dos tipos de objeto ORM (Object Relational Mapping ou Mapeamento Objeto Relacional)?**
+**Como eles se relacionam uns com os outros?**
 
 Os objetos ORM são construídos em torno de _models_, _resource models_ e _resource collections_.
 Temos quatro elementos no Magento:
 - **_Models_**
   - Definem os dados e comportamento de entidades.
   - São uma camada de abstração de dados em forma de objeto (classe)
-  - Models não tem acesso direto ao banco de dados, apenas os resource models.
+  - Models não tem acesso direto ao banco de dados, apenas os _resource models_.
 - **_Resources_**
   - Conecta com o banco de dados através de adaptadores.
 - **_Resource Models_**
@@ -23,20 +31,19 @@ Temos quatro elementos no Magento:
     - Lógica de negócios. Um Resource Model pode fazer validações dos dados, iniciar processos antes ou depois que um dado é salvo, ou realizar outras operações no banco.
 - **_Collections_**
   - Armazena conjuntos de modelos e funcionalidades relacionadas, incluindo filtragem, classificação e paginação.
-  - classe que carrega vários models e devolve (geralmente) um objeto como um array ou algo parecido.
+  - Classe que carrega vários models e devolve (geralmente) um objeto como um array ou algo parecido.
 
 ## Descrever como ocorre a leitura e gravação de uma entidade
 
-### Como você utiliza o método nativo de gravação/leitura no processo de desenvolvimento? 
+**Como você utiliza o método nativo de gravação/leitura no processo de desenvolvimento?**
 
-#### Processo de carregamento (_load process_)
+**Processo de carregamento (_load process_)**
 - Primeiro o método `beforeLoad` é chamado (esse ponto é ótimo para usar um plugin). 
 - Cria conexão com o banco de dados e carrega uma consulta de seleção usando parâmetros para buscar a linha e definir os dados.
 - O método `afterLoad` é chamado (bom para plugins)
 - O objetos é retornado.
 
-#### Processo de salvamento (_save process_)
-
+**Processo de salvamento (_save process_)**
 - Uma transação é iniciada
 - Se nada foi modificado na entidade, a transação é confirmada e o método retornado
 - `beforeSave` é chamado (este é um bom ponto para plugins)
@@ -45,17 +52,16 @@ Temos quatro elementos no Magento:
 
 ## Descrever como filtrar, ordenar e especificar os valores selecionados para _collections_ e _repositories_
 
-### Como você seleciona um subconjunto de registros do banco de dados?
+**Como você seleciona um subconjunto de registros do banco de dados?**
 
-Describe how to filter, sort, and specify the selected values for collections and repositories 
-**How do you select a subset of records from the database?**
+>...
 
 ## Demonstrar habilidade para usar o esquema declarativo (_declarative schema_)
 
-Ler: https://devdocs.magento.com/guides/v2.3/extension-dev-guide/declarative-schema/
+Ver: https://devdocs.magento.com/guides/v2.4/extension-dev-guide/declarative-schema/
 
 
-### Como você adiciona uma coluna usando o declarative schema? 
+**Como você adiciona uma coluna usando o declarative schema?**
 
 O nó `column` adiciona uma coluna. Conforme no exemplo abaixo, que está adicionando a coluna _date_closed_:
 ```xml
@@ -76,15 +82,9 @@ O nó `column` adiciona uma coluna. Conforme no exemplo abaixo, que está adicio
 ```
 
 
-### Como você modifica uma tabela adicionada por outro módulo? 
-### Como você exclui uma coluna? 
-### Como você adiciona um índice ou chave estrangeira usando o esquema declarativo?
-### Como você manipula dados usando patches de dados? 
-### Qual é o propósito dos patches de esquema?
+**Como você modifica uma tabela adicionada por outro módulo?**
+**Como você exclui uma coluna?**
+**Como você adiciona um índice ou chave estrangeira usando o esquema declarativo?**
+**Como você manipula dados usando patches de dados?**
+**Qual é o propósito dos patches de esquema?**
 
-**How do you add a column using declarative schema?**
-**How do you modify a table added by another module?**
-**How do you delete a column?**
-**How do you add an index or foreign key using declarative schema?**
-**How do you manipulate data using data patches?**
-**What is the purpose of schema patches?**
