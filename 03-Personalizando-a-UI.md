@@ -46,6 +46,12 @@ Um template é atribuído à um bloco através de um arquivo de layout XML.
 A substituição de um arquivo de template de um bloco já existente também é feita em um arquivo de layout XML:
 
 ```xml
+<referenceBlock name="block_to_change" template="Vendor_Module::/path/to/template.phtml" />
+```
+
+ou
+
+```xml
 <referenceBlock name="block_to_change">
     <arguments>
         <argument name="template" xsi:type="string">[Vendor]_[Module]::/path/to/template.phtml</argument>
