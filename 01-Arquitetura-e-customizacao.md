@@ -461,9 +461,25 @@ Configura os widgets para serem usados com páginas ou blocos CMS e produtos.
 ### Descrever o desenvolvimento no contexto dos escopos website e store. 
 
 **Como você pode identificar o escopo de configuração para uma certa variável?**
+
+Quando criamos campos de configuração no Magento, através do arquivo `etc/adminhtml/system.xml`, podemos determinar o escopo daquela informação no próprio nó, através dos argumentos `showInDefault="1"`, `showInWebsite="1"` e `showInStore="1"`. Veja abaixo um exemplo de um _field_, para mais detalhes, consulte a [documentação](https://devdocs.magento.com/guides/v2.4/config-guide/prod/config-reference-systemxml.html).
+```xml
+<field id="UNIQUE_FIELD_ID" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" type="text">
+    <label>A meaningful field label</label>
+    <comment>A descriptive text explaining this configuration field.</comment>
+    <tooltip>Another possible frontend element that also can be used to describe the meaning of this field. Will be displayed as a small icon beside the field.</tooltip>
+    <validate>required-entry no-whitespace</validate> <!-- Field is required and must not contain any whitespace. -->
+    <if_module_enabled>VENDOR_MODULE</if_module_enabled>
+    <depends> <!-- This field will only be visible if the field with the id A_UNIQUE_FIELD_ID is set to value 1 -->
+       <field id="A_UNIQUE_FIELD_ID">1</field>
+    </depends>
+</field>
+```
+
 **Como os escopos nativos da Magento (por exemplo, preço ou estoque) podem afetar o desenvolvimento e o processo de tomada de decisão?**
 
-> ...
+Com os escopos, podemos ter um Magento com vários websites e, dentro de cada website, várias lojas. Antes de tudo devemos entender as necessidades do cliente para planejar se o desenvolvimento deve ocorrer com um website e várias lojas, ou com vários websites e uma loja em cada um ou, ainda, vários websites e várias lojas. O processo de tomada de decisão deve considerar a necessidade de compartilhamento (ou isolamento) do catálogo de produtos ou base de clientes entre estes websites/lojas e definições sobre métodos de pagamento, moeda, estoque, preço e idioma, entre outros. 
+Para saber mais sobre como funcionam os escopos, consulte [este artigo](https://www.magenteiro.com/blog/para-magenteiros/multiloja-com-magento/?mid=c9f0f895fb98ab9159f51fd0297e236d) e a [documentação oficial](https://docs.magento.com/user-guide/configuration/scope.html).
 
 ### Demonstrar capacidade de adicionar valores diferentes para diferentes escopos.
 
