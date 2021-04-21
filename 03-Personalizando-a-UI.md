@@ -79,15 +79,21 @@ As diretivas do layout XML da Magento contém instruções para:
 - Adicionar e excluir recursos estáticos (JavaScript, CSS, fontes) na _head_ da página;
   - Isso pode ser feito no arquivo `<theme_dir>/Magento_Theme/layout/default_head_blocks.xml`
 - Criar e modificar contêineres;
-  - Para criar, usa-se o nó _container_: `<container name="you.container" as="youContainer" label="My Container" htmlTag="div" htmlClass="my-container" />`
-   - Para modificar, usamos o nó _referenceContainer_: 
+  - Para criar, usa-se o nó _container_:
+    ```xml
+      <container name="you.container" as="youContainer" label="My Container" htmlTag="div" htmlClass="my-container" />
+    ```
+  - Para modificar, usamos o nó _referenceContainer_: 
      ```xml
        <referenceContainer name="header.panel">
            <block class="YouVendor\YouModule\Block\YouBlock" name="new.block" />
        </referenceContainer>
        ```
 - Criar e modificar blocos;
-  - Para criar, com o nó _block_: `<block class="Magento\Catalog\Block\Product\View\Description" name="product.info.sku" template="product/view/attribute.phtml" after="product.info.type" />`
+  - Para criar, com o nó _block_: 
+     ```xml
+     <block class="Magento\Catalog\Block\Product\View\Description" name="product.info.sku" template="product/view/attribute.phtml" after="product.info.type" />
+     ```
   - E para modificar, aplicamos o _referenceBlock_:
        ```xml
        <!-- Bloco original -->
@@ -118,15 +124,19 @@ As diretivas do layout XML da Magento contém instruções para:
         </referenceBlock>
        ```
 - Passar argumentos em blocos; 
-- Alterar a localização e a ordem dos elementos (blocos e contêineres);
-  - Mover: `<move element="product.info.review" destination="product.info.main" before="product.info.price"/>`
+- Alterar a localização e a ordem dos elementos (blocos e contêineres):
+  ```xml
+     <move element="product.info.review" destination="product.info.main" before="product.info.price"/>
+  ```
 - Excluir elementos (blocos e contêineres).
-  - Remover: `<referenceBlock name="catalog.compare.sidebar" remove="true" />`
+  ```xml
+     <referenceBlock name="catalog.compare.sidebar" remove="true" />
+  ```
 
 > Observação: lembrando que o caminho para o arquivo template.phtml é `<module_dir>/view/<area>/templates` ou `<theme_dir>/<Vendor_Module>/templates`
 
 **[Instruções gerais de layout](https://devdocs.magento.com/guides/v2.4/frontend-dev-guide/layouts/xml-instructions.html#fedg_layout_xml-instruc_ex)**
-- `<block>`: Criação de blocos. Requerido o _namespace_ completo e a _class_ para o bloco (não coloque um "\" no início do _type_).
+- `<block>`: Criação de blocos. A classe padrão é a `Magento\Framework\View\Element\Template`.
 - `<container>`: Um agrupamento de blocos (e outros contêiners). Nele pode-se especificar a tag html que englobará os blocos. Se não houver blocos dentro dele, ele não será mostrado.
 - Atributos _before_ e _after_: Ajuda a definir o posicionamento dos elementos em relação à outros
 - `<arguments>` e `<argument>`: `<argument>` é usado para passar um argumento. Ele fica encapsulado em `<arguments>`. O argumento define um valor para o _array_ de dados do bloco.
@@ -136,28 +146,8 @@ As diretivas do layout XML da Magento contém instruções para:
 - `<update>`: adiciona um arquivo de layout.
 
 **Como você registra um novo arquivo de layout?**
-
-Você pode criar um novo arquivo de layout em `<module_dir>/view/<area>/layout/<layout-handle>.xml` ou em `<theme_dir>/<Vendor>_<Module>/layout/<layout-handle>.xml`. Nesse arquivo, nomeado com o _handle_ que você definiu, deve conter a declaração do XML e o nó `<page>` como raiz do arquivo:
-
-```xml
-<?xml version="1.0"?>
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-    ...
-</page>
-```
-
-
-## Criar e adicionar código e marcação em uma determinada página
-
-**Como você adiciona um novo conteúdo em uma página existente usando o layout XML?**
-
-Pode-se criar um novo arquivo de layout XML no tema ou módulo para modificar blocos e containers. O nome do arquivo será o nome do handle da página à ser atualizada.
-Então pode-se usar as instruções descritas acima para realizar as modificações desejadas.
-
-Para modificar o layout da página, cria-se um arquivo de layout dentro de `app/design/frontend/<VendorName>/<ThemeName>/Magento_Theme/page_layout/`.
-
-Por exemplo, para modificar o layout de 3 colunas, criamos o arquivo `<VendorName>/<ThemeName>/Magento_Theme/page_layout/3-columns-double-footer.xml`, por exemplo, com o seguinte conteúdo:
-
+Um novo _layout_ pode ser registrado seguindo estes 2 passos:
+1. Crie um novo arquivo de layout de página em um tema personalizado: `app/design/frontend/<VendorName>/<ThemeName>/Magento_Theme/page_layout/new_layout_file.xml`
 ```xml
 <?xml version="1.0"?>
 <layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd">
@@ -171,9 +161,7 @@ Por exemplo, para modificar o layout de 3 colunas, criamos o arquivo `<VendorNam
     </referenceContainer>
 </layout>
 ```
-
-Após criar o arquivo de layout, deve-se registrá-lo no arquivo `layouts.xml`, cujo caminho é: `app/design/frontend/<VendorName>/<ThemeName>/Magento_Theme/layouts.xml`.
-
+2. Registre o novo layout no arquivo `layouts.xml`, em `app/design/frontend/<VendorName>/<ThemeName>/Magento_Theme/layouts.xml`
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <page_layouts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/PageLayout/etc/layouts.xsd">
@@ -182,7 +170,29 @@ Após criar o arquivo de layout, deve-se registrá-lo no arquivo `layouts.xml`, 
     </layout>
 </page_layouts>
 ```
-
 Observe que o valor do novo atributo layout id deve corresponder ao nome do arquivo XML de layout de página recém-criado.
 
 Veja com mais detalhes [aqui na documentação](https://devdocs.magento.com/guides/v2.4/frontend-dev-guide/layouts/layout-create.html).
+
+Além disso, pode-se registrar um novo _handle_:
+- em um arquivo de layout, usando a tag `<update>`
+- após do registro de uma nova rota, onde o _handle_ é criado seguindo o padrão: `routeId_controller_action.xml`
+
+
+## Criar e adicionar código e marcação em uma determinada página
+
+**Como você adiciona um novo conteúdo em uma página existente usando o layout XML?**
+
+Pode-se criar um novo arquivo de layout XML no tema ou módulo para modificar blocos e containers. O nome do arquivo será o nome do handle da página à ser atualizada.
+Então pode-se usar as instruções descritas acima (e na [documentação](https://devdocs.magento.com/guides/v2.4/frontend-dev-guide/layouts/xml-instructions.html)) para realizar as modificações desejadas.
+
+Você pode criar um novo arquivo de layout em `<module_dir>/view/<area>/layout/<layout-handle>.xml` ou em `<theme_dir>/<Vendor>_<Module>/layout/<layout-handle>.xml`. Nesse arquivo, nomeado com o _handle_ que você definiu, deve conter a declaração do XML e o nó `<page>` como raiz do arquivo:
+
+```xml
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    ...
+</page>
+```
+
+
