@@ -61,7 +61,7 @@ Para passar, é necessário acertar 68% das respostas.
 - [WebJump - Tradução do guia de estudo da Magento](https://webjump.com.br/treinamento-oficial-magento/guias-de-estudo/)
 - [Magento DevDocs](https://devdocs.magento.com/)
 - [Glossário do Magento](https://glossary.magento.com/)
-- [Magenteiro](https://www.magenteiro.com/)
+- [Magenteiro](https://www.magenteiro.com?mid=c9f0f895fb98ab9159f51fd0297e236d)
 - [Repositório: magento-notes/magento2-exam-notes](https://github.com/magento-notes/magento2-exam-notes)
 - [MagedIn University](https://university.magedin.com/curso/iniciando-o-desenvolvimento-em-magento-2)
 - [Amasty Blog](https://amasty.com/blog/magento-2-certification-dependency-injection-approach-and-architecture/)
