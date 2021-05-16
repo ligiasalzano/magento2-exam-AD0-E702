@@ -147,8 +147,8 @@ As diretivas do layout XML da Magento contém instruções para:
 
 **Como você registra um novo arquivo de layout?**
 Um novo _layout_ pode ser registrado seguindo estes 2 passos:
-1. Crie um novo arquivo de layout de página em um tema personalizado: `app/design/frontend/<VendorName>/<ThemeName>/Magento_Theme/page_layout/new_layout_file.xml`:
 
+1. Crie um novo arquivo de layout de página em um tema personalizado: `app/design/frontend/<VendorName>/<ThemeName>/Magento_Theme/page_layout/new_layout_file.xml`:
 ```xml
 <layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd">
     <update handle="3columns"/>
@@ -163,7 +163,6 @@ Um novo _layout_ pode ser registrado seguindo estes 2 passos:
 ```
 
 2. Registre o novo layout no arquivo `layouts.xml`, em `app/design/frontend/<VendorName>/<ThemeName>/Magento_Theme/layouts.xml`:
-
 ```xml
 <page_layouts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/PageLayout/etc/layouts.xsd">
     <layout id="3-columns-double-footer">
