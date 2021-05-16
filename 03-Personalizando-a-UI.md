@@ -147,7 +147,7 @@ As diretivas do layout XML da Magento contém instruções para:
 
 **Como você registra um novo arquivo de layout?**
 Um novo _layout_ pode ser registrado seguindo estes 2 passos:
-1. Crie um novo arquivo de layout de página em um tema personalizado: `app/design/frontend/<VendorName>/<ThemeName>/Magento_Theme/page_layout/new_layout_file.xml`
+1. Crie um novo arquivo de layout de página em um tema personalizado: `app/design/frontend/<VendorName>/<ThemeName>/Magento_Theme/page_layout/new_layout_file.xml`:
 ```xml
 <?xml version="1.0"?>
 <layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd">
