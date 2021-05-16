@@ -161,7 +161,7 @@ Um novo _layout_ pode ser registrado seguindo estes 2 passos:
     </referenceContainer>
 </layout>
 ```
-2. Registre o novo layout no arquivo `layouts.xml`, em `app/design/frontend/<VendorName>/<ThemeName>/Magento_Theme/layouts.xml`
+2. Registre o novo layout no arquivo `layouts.xml`, em `app/design/frontend/<VendorName>/<ThemeName>/Magento_Theme/layouts.xml`:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <page_layouts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/PageLayout/etc/layouts.xsd">
