@@ -99,7 +99,7 @@ O arquivo module.xml é localizado no diretório `<vendor>/<module>/etc`. Neste 
 
 ```
 
-As dependências são carregadas no elemento `<sequence>` (que pertence ao nó `<module>`):
+As dependências são carregadas no elemento `<sequence>` (que pertence ao nó `<module>`). Aqui também é determinada a sequência de carregamento:
 ```xml
 <sequence>
   <module name="Vendor_Module"/>
