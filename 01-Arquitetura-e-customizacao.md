@@ -252,7 +252,7 @@ Arquivos estáticos.
 
 **/Api: Service Contracts - Contratos de serviço**
 
-Aqui ficam todas as interfaces responsáveis pelos contratos de serviço (_services contracts_). Contém as classes que serão expostas na api do Magento. Exemplo `\Magento\Catalog\Api\CategoryListInterface`.
+Aqui ficam todas as interfaces responsáveis pelos contratos de serviço (_services contracts_). Contém classes que serão expostas na api do Magento. Também contém métodos que podem ser reutilizados em outros locais da aplicação. Exemplo `\Magento\Catalog\Api\CategoryListInterface`.
 
 **/Api/Data: Data Service Contracts - Dados dos contratos de serviço**
 
@@ -260,7 +260,23 @@ Esta pasta contém interfaces que representam dados. Exemplos: _Product interfac
 
 **/Block: View Models**
 
-Este diretório faz parte da camada View do MVC. Contém os _View Models_ para os templates do Magento. Os _blocks_ são as classes responsáveis por fazer a inteface entre o template e os _resource models_ do Magento para obter dados, trabalhá-los e passá-los para o template. Eles fornecem a lógica de negócio para os templates, que devem usar o mínimo de PHP (separação de responsabilidades).
+Este diretório faz parte da camada View do MVC. Contém os _View Models_ para os templates do Magento. Os _blocks_ são as classes responsáveis por fazer a inteface entre o template e os _resource models_ do Magento para obter dados, trabalhá-los e passá-los para o template. Eles fornecem a lógica de negócio para os templates, que devem usar o mínimo de PHP (separação de responsabilidades). Veja mais (aqui)[https://stackoverflow.com/a/4946409] e (aqui)[https://code.tutsplus.com/articles/improving-your-work-flow-separate-your-mark-up-from-your-logic--wp-29180].
+
+**/ViewModel**
+Contém classes que auxiliam os blocos no fornecimento de informações para os templates.
+A fim de evitar que os contrutores dos Blocos ficam muito grandes (tornando os testes e reutilizações difíceis), separamos as responsabilidades. Enquanto Blocos tratam da renderização dos blocos, os View Models cuidam da lógica de negócios.
+
+Para fornecer um View Model para um bloco, informamos através de um argumento na declaração do bloco dentro do xml de layout:
+
+```xml
+<block name="product.promotions" template="Vendor_Module::template.phtml" >
+    <arguments>
+        <argument name="viewModel" xsi:type="object">Vendor\Module\Block\ViewModelClass</argument>
+    </arguments>
+</block>
+```
+
+Leia mais sobre no artigo (Better Blocks: Magento 2 PHP View Models)[https://firegento.com/blog/2017/12/07/better-blocks-magento-2-php-view-models/].
 
 **/Console: Console Commands**
 
