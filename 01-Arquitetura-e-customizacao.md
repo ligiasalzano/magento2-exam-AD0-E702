@@ -345,11 +345,11 @@ O Magento 2 adotou o TDD (Test Driven Development). Todos os testes ficam neste 
 
 **/Ui: UI Component Data Providers**
 
-Aqui ficam todos os _Models_ utilizados pelos componentes UI.
+Aqui ficam todos os provedores e modificadores de dados utilizados pelos componentes UI.
 
 **/view/[area]/layout: Layout XML**
 
-Aqui temos os arquivos .xml que estruturam o layout. O nome dos arquivos são formados da seguite forma: `{route_id}_{controller}_{action}.xml`
+Aqui temos os arquivos .xml que estruturam o layout e ligam os blocos com os templates. O nome dos arquivos são formados da seguite forma: `{route_id}_{controller}_{action}.xml`. 
 
 **/view/[area]/templates: Block Templates**
 
