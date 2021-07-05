@@ -260,7 +260,7 @@ Esta pasta contém interfaces que representam dados. Exemplos: _Product interfac
 
 **/Block: View Models**
 
-Este diretório faz parte da camada View do MVC. Contém os _View Models_ para os templates do Magento. Os _blocks_ são as classes responsáveis por fazer a inteface entre o template e os _resource models_ do Magento para obter dados, trabalhá-los e passá-los para o template. Eles fornecem a lógica de negócio para os templates, que devem usar o mínimo de PHP (separação de responsabilidades). Veja mais (aqui)[https://stackoverflow.com/a/4946409] e (aqui)[https://code.tutsplus.com/articles/improving-your-work-flow-separate-your-mark-up-from-your-logic--wp-29180].
+Este diretório faz parte da camada View do MVC. Contém os _View Models_ para os templates do Magento. Os _blocks_ são as classes responsáveis por fazer a inteface entre o template e os _resource models_ do Magento para obter dados, trabalhá-los e passá-los para o template. Eles fornecem a lógica de negócio para os templates, que devem usar o mínimo de PHP (separação de responsabilidades). Veja mais [aqui](https://stackoverflow.com/a/4946409) e [aqui](https://code.tutsplus.com/articles/improving-your-work-flow-separate-your-mark-up-from-your-logic--wp-29180).
 
 **/ViewModel**
 Contém classes que auxiliam os blocos no fornecimento de informações para os templates.
@@ -276,7 +276,7 @@ Para fornecer um View Model para um bloco, informamos através de um argumento n
 </block>
 ```
 
-Leia mais sobre no artigo (Better Blocks: Magento 2 PHP View Models)[https://firegento.com/blog/2017/12/07/better-blocks-magento-2-php-view-models/].
+Leia mais sobre no artigo [Better Blocks: Magento 2 PHP View Models](https://firegento.com/blog/2017/12/07/better-blocks-magento-2-php-view-models/).
 
 **/Console: Console Commands**
 
