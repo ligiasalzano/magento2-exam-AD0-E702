@@ -354,7 +354,7 @@ Aqui temos os arquivos .xml que estruturam o layout e ligam os blocos com os tem
 **/view/[area]/templates: Block Templates**
 
 Enquanto a lógica de negócio é representada nos `Blocks`, a forma como essa lógica é apresentada ao usuário é definida nos arquivos de template. Esses arquivos devem conter o mínimo possível de PHP. 
-Observação: note que o nome desta pasta é escrito no plural: templates.
+> Observação: note que o nome desta pasta é escrito no plural: templates.
 
 **/view/[area]/page_layout**
 
