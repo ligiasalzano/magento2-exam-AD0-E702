@@ -2,7 +2,7 @@ Anotações de estudo para a certificação ["Adobe Certified Professional Magen
 Antigamente, esta era a certificação: [Magento Associate Developer](https://spark.adobe.com/page/MRusIqkhBMG0d/).\
 Caso possua uma sugestão ou correção, é só me escrever. :)
 
-## Veja este repósitório em: https://ligiasalzano.github.io/magento2-exam-AD0-E702/
+## Veja este repositório em: https://ligiasalzano.github.io/magento2-exam-AD0-E702/
 
 ### Informações
 O exame é composto por 60 questões de múltipla escolha e tem duração de 120 minutos.
